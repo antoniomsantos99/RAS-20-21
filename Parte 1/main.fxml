@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import de.jensd.fx.glyphs.emojione.EmojiOneView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="687.0" prefWidth="1007.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="687.0" VBox.vgrow="ALWAYS">
+      <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c3c3c" height="687.0" stroke="BLACK" strokeType="INSIDE" width="1015.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="71.0" layoutX="1.0" layoutY="-5.0" stroke="BLACK" width="1013.0">
+               <fill>
+                  <LinearGradient endX="1.0" startX="0.01895734597156401">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.5137255191802979" green="0.7254902124404907" blue="0.1882352977991104" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.18211805820465088" green="0.25" blue="0.0729166641831398" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <ImageView fitHeight="87.0" fitWidth="181.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logosemfundo.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="181.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Futebol" wrappingWidth="88.13671875">
+               <font>
+                  <Font name="Bauhaus 93" size="24.0" />
+               </font>
+            </Text>
+            <EmojiOneView fill="WHITE" glyphName="SOCCER" layoutX="151.0" layoutY="112.0" size="24" text="⚽" wrappingWidth="15.300000190734863" />
+            <Text fill="WHITE" layoutX="803.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tenis" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Bauhaus 93" size="24.0" />
+               </font>
+            </Text>
+            <EmojiOneView fill="WHITE" glyphName="Tennis" layoutX="771.0" layoutY="110.0" size="24" text="🎾" wrappingWidth="15.300000190734863" />
+            <Pane layoutX="7.0" layoutY="135.0" prefHeight="81.0" prefWidth="338.0">
+               <children>
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="79.0" stroke="BLACK" strokeType="INSIDE" width="338.0" />
+                  <Text layoutX="31.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Porto">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="233.0" layoutY="23.2734375" strokeType="OUTSIDE" strokeWidth="0.0" text="Benfica">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <ToggleButton layoutX="248.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <ToggleButton layoutX="33.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <Text layoutX="110.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estádio do Dragão" />
+                  <Text layoutX="127.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="31 Fev 20:00" />
+                  <ToggleButton layoutX="137.0" layoutY="30.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+               </children>
+            </Pane>
+            <Pane layoutX="11.0" layoutY="237.0" prefHeight="81.0" prefWidth="338.0">
+               <children>
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="79.0" stroke="BLACK" strokeType="INSIDE" width="338.0" />
+                  <Text layoutX="31.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Porto">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="233.0" layoutY="23.2734375" strokeType="OUTSIDE" strokeWidth="0.0" text="Benfica">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <ToggleButton layoutX="248.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <ToggleButton layoutX="33.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <ToggleButton layoutX="138.0" layoutY="23.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <Text layoutX="110.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estádio do Dragão" />
+                  <Text layoutX="127.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="31 Fev 20:00" />
+               </children>
+            </Pane>
+            <Pane layoutX="665.0" layoutY="336.0" prefHeight="81.0" prefWidth="338.0">
+               <children>
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="79.0" stroke="BLACK" strokeType="INSIDE" width="338.0" />
+                  <Text layoutX="31.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Porto">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="233.0" layoutY="23.2734375" strokeType="OUTSIDE" strokeWidth="0.0" text="Benfica">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <ToggleButton layoutX="248.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <ToggleButton layoutX="33.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <ToggleButton layoutX="138.0" layoutY="23.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <Text layoutX="110.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estádio do Dragão" />
+                  <Text layoutX="127.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="31 Fev 20:00" />
+               </children>
+            </Pane>
+            <Pane layoutX="665.0" layoutY="238.0" prefHeight="81.0" prefWidth="338.0">
+               <children>
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="79.0" stroke="BLACK" strokeType="INSIDE" width="338.0" />
+                  <Text layoutX="31.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Porto">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="233.0" layoutY="23.2734375" strokeType="OUTSIDE" strokeWidth="0.0" text="Benfica">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <ToggleButton layoutX="248.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <ToggleButton layoutX="33.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <ToggleButton layoutX="138.0" layoutY="23.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <Text layoutX="110.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estádio do Dragão" />
+                  <Text layoutX="127.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="31 Fev 20:00" />
+               </children>
+            </Pane>
+            <Pane layoutX="668.0" layoutY="136.0" prefHeight="81.0" prefWidth="338.0">
+               <children>
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="79.0" stroke="BLACK" strokeType="INSIDE" width="338.0" />
+                  <Text layoutX="31.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Porto">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="233.0" layoutY="23.2734375" strokeType="OUTSIDE" strokeWidth="0.0" text="Benfica">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <ToggleButton layoutX="248.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <ToggleButton layoutX="33.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <ToggleButton layoutX="138.0" layoutY="23.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <Text layoutX="110.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estádio do Dragão" />
+                  <Text layoutX="127.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="31 Fev 20:00" />
+               </children>
+            </Pane>
+            <Pane layoutX="9.0" layoutY="341.0" prefHeight="81.0" prefWidth="338.0">
+               <children>
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="79.0" stroke="BLACK" strokeType="INSIDE" width="338.0" />
+                  <Text layoutX="31.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Porto">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="233.0" layoutY="23.2734375" strokeType="OUTSIDE" strokeWidth="0.0" text="Benfica">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <ToggleButton layoutX="248.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <ToggleButton layoutX="33.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <ToggleButton layoutX="138.0" layoutY="23.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
+                  <Text layoutX="110.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estádio do Dragão" />
+                  <Text layoutX="127.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="31 Fev 20:00" />
+               </children>
+            </Pane>
+            <Button ellipsisString="Tenis" layoutX="334.0" layoutY="6.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="91.0" style="-fx-background-color: transparent;" text="Tenis" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button ellipsisString="Registar" layoutX="876.0" layoutY="6.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" style="-fx-background-color: transparent;" text="Registar" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button ellipsisString="Entrar" layoutX="772.0" layoutY="7.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="95.0" style="-fx-background-color: transparent;" text="Entrar" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button ellipsisString="Futebol" layoutX="217.0" layoutY="5.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" style="-fx-background-color: transparent;" text="Futebol" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <ScrollPane layoutX="390.0" layoutY="126.0" prefHeight="368.0" prefWidth="249.0" style="-fx-background: #3c3c3c; -fx-background-color: #3c3c3c;">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="476.0" prefWidth="228.0" style="-fx-background: #3c3c3c; -fx-border: #3c3c3c;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#83b930" height="64.0" layoutX="17.0" layoutY="12.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#83b930" height="64.0" layoutX="16.0" layoutY="94.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#83b930" height="64.0" layoutX="17.0" layoutY="173.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                        <EmojiOneView fill="WHITE" glyphName="SOCCER" layoutX="36.0" layoutY="52.0" size="24" text="⚽" wrappingWidth="15.300000190734863" />
+                        <EmojiOneView fill="WHITE" glyphName="SOCCER" layoutX="34.0" layoutY="134.0" size="24" text="⚽" wrappingWidth="15.300000190734863" />
+                        <EmojiOneView fill="WHITE" glyphName="Tennis" layoutX="33.0" layoutY="211.0" size="24" text="🎾" wrappingWidth="15.300000190734863" />
+                        <Text layoutX="69.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PORTO-BENFICA" />
+                        <Text layoutX="77.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="160.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.00">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="66.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SPORTING - BRAGA" />
+                        <Text layoutX="70.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BRAGA">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="159.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.00">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="63.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sonay Kartal-Freya Christie" />
+                        <Text layoutX="65.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S. KARTAL">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="165.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6.25">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="145.0" layoutX="398.0" layoutY="517.0" stroke="BLACK" strokeType="INSIDE" width="221.0" />
+            <Text layoutX="407.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ganhos Possiveis: 62.5">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="408.0" layoutY="572.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total das odds: 6.25">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField layoutX="472.0" layoutY="520.0" prefHeight="26.0" prefWidth="125.0" text="10">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Text layoutX="407.0" layoutY="537.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aposta:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button layoutX="465.0" layoutY="617.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Apostar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
