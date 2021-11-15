@@ -53,7 +53,7 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="687.0" VBox.vgrow="ALWAYS">
       <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c3c3c" height="687.0" layoutY="-24.0" stroke="BLACK" strokeType="INSIDE" width="1015.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c3c3c" height="716.0" layoutY="-24.0" stroke="BLACK" strokeType="INSIDE" width="1019.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="71.0" layoutX="1.0" layoutY="-5.0" stroke="BLACK" width="1013.0">
                <fill>
                   <LinearGradient endX="1.0" startX="0.01895734597156401">
@@ -72,70 +72,38 @@
                   </LinearGradient>
                </fill>
             </Rectangle>
-            <Text fill="WHITE" layoutX="143.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Futebol" wrappingWidth="88.13671875">
+            <Text fill="WHITE" layoutX="529.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Futebol" wrappingWidth="88.13671875">
                <font>
                   <Font name="Bauhaus 93" size="24.0" />
                </font>
             </Text>
-            <EmojiOneView fill="WHITE" glyphName="SOCCER" layoutX="113.0" layoutY="112.0" size="24" text="⚽" wrappingWidth="15.300000190734863" />
-            <Pane layoutX="7.0" layoutY="135.0" prefHeight="81.0" prefWidth="338.0">
+            <EmojiOneView fill="WHITE" glyphName="SOCCER" layoutX="499.0" layoutY="125.0" size="24" text="⚽" wrappingWidth="15.300000190734863" />
+            <Pane layoutX="393.0" layoutY="150.0" prefHeight="73.0" prefWidth="337.0">
                <children>
-                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="79.0" stroke="BLACK" strokeType="INSIDE" width="338.0" />
-                  <Text layoutX="31.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Porto">
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="91.0" layoutX="-58.0" stroke="BLACK" strokeType="INSIDE" width="410.0" />
+                  <Text layoutX="-43.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Porto">
                      <font>
-                        <Font name="Arial" size="24.0" />
+                        <Font name="Arial" size="22.0" />
                      </font>
                   </Text>
-                  <Text layoutX="233.0" layoutY="23.2734375" strokeType="OUTSIDE" strokeWidth="0.0" text="Benfica">
+                  <Text layoutX="-43.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Benfica">
                      <font>
-                        <Font name="Arial" size="24.0" />
+                        <Font name="Arial" size="22.0" />
                      </font>
                   </Text>
-                  <ToggleButton layoutX="248.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
-                  <ToggleButton layoutX="33.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
-                  <Text layoutX="110.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estádio do Dragão" />
-                  <Text layoutX="127.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="31 Fev 20:00" />
-                  <ToggleButton layoutX="137.0" layoutY="30.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
-               </children>
-            </Pane>
-            <Pane layoutX="11.0" layoutY="237.0" prefHeight="81.0" prefWidth="338.0">
-               <children>
-                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="79.0" stroke="BLACK" strokeType="INSIDE" width="338.0" />
-                  <Text layoutX="31.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Porto">
+                  <ToggleButton layoutX="259.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="2.00">
                      <font>
-                        <Font name="Arial" size="24.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="233.0" layoutY="23.2734375" strokeType="OUTSIDE" strokeWidth="0.0" text="Benfica">
+                        <Font size="18.0" />
+                     </font></ToggleButton>
+                  <ToggleButton layoutX="87.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.90">
                      <font>
-                        <Font name="Arial" size="24.0" />
-                     </font>
-                  </Text>
-                  <ToggleButton layoutX="248.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
-                  <ToggleButton layoutX="33.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
-                  <ToggleButton layoutX="138.0" layoutY="23.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
-                  <Text layoutX="110.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estádio do Dragão" />
-                  <Text layoutX="127.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="31 Fev 20:00" />
-               </children>
-            </Pane>
-            <Pane layoutX="9.0" layoutY="341.0" prefHeight="81.0" prefWidth="338.0">
-               <children>
-                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="79.0" stroke="BLACK" strokeType="INSIDE" width="338.0" />
-                  <Text layoutX="31.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Porto">
+                        <Font size="18.0" />
+                     </font></ToggleButton>
+                  <Text layoutX="-41.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="31 Fev 20:00" />
+                  <ToggleButton layoutX="174.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.50">
                      <font>
-                        <Font name="Arial" size="24.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="233.0" layoutY="23.2734375" strokeType="OUTSIDE" strokeWidth="0.0" text="Benfica">
-                     <font>
-                        <Font name="Arial" size="24.0" />
-                     </font>
-                  </Text>
-                  <ToggleButton layoutX="248.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
-                  <ToggleButton layoutX="33.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
-                  <ToggleButton layoutX="138.0" layoutY="23.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.00" />
-                  <Text layoutX="110.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estádio do Dragão" />
-                  <Text layoutX="127.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="31 Fev 20:00" />
+                        <Font size="18.0" />
+                     </font></ToggleButton>
                </children>
             </Pane>
             <Button ellipsisString="Tenis" layoutX="408.0" layoutY="11.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="91.0" style="-fx-background-color: transparent;" text="Ténis" textFill="WHITE">
@@ -158,7 +126,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <ScrollPane layoutX="390.0" layoutY="126.0" prefHeight="368.0" prefWidth="249.0" style="-fx-background: #3c3c3c; -fx-background-color: #3c3c3c;">
+            <ScrollPane layoutX="756.0" layoutY="136.0" prefHeight="368.0" prefWidth="249.0" style="-fx-background: #3c3c3c; -fx-background-color: #3c3c3c;">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="476.0" prefWidth="228.0" style="-fx-background: #3c3c3c; -fx-border: #3c3c3c;">
                      <children>
@@ -166,37 +134,37 @@
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#83b930" height="64.0" layoutX="16.0" layoutY="94.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#83b930" height="64.0" layoutX="17.0" layoutY="173.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                         <EmojiOneView fill="WHITE" glyphName="SOCCER" layoutX="36.0" layoutY="52.0" size="24" text="⚽" wrappingWidth="15.300000190734863" />
-                        <EmojiOneView fill="WHITE" glyphName="SOCCER" layoutX="34.0" layoutY="134.0" size="24" text="⚽" wrappingWidth="15.300000190734863" />
-                        <EmojiOneView fill="WHITE" glyphName="Tennis" layoutX="33.0" layoutY="211.0" size="24" text="🎾" wrappingWidth="15.300000190734863" />
+                        <EmojiOneView fill="WHITE" glyphName="SOCCER" layoutX="36.0" layoutY="134.0" size="24" text="⚽" wrappingWidth="15.300000190734863" />
+                        <EmojiOneView fill="WHITE" glyphName="Tennis" layoutX="36.0" layoutY="211.0" size="24" text="🎾" wrappingWidth="15.300000190734863" />
                         <Text layoutX="69.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PORTO-BENFICA" />
-                        <Text layoutX="77.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
+                        <Text layoutX="69.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text layoutX="160.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.00">
+                        <Text layoutX="160.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.50">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text layoutX="66.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SPORTING - BRAGA" />
-                        <Text layoutX="70.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BRAGA">
+                        <Text layoutX="69.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SPORTING - BRAGA" />
+                        <Text layoutX="69.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BRAGA">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text layoutX="159.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.00">
+                        <Text layoutX="160.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2.15">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text layoutX="63.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sonay Kartal-Freya Christie" />
-                        <Text layoutX="65.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S. KARTAL">
+                        <Text layoutX="69.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sonay Kartal-Freya Christie" />
+                        <Text layoutX="69.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S. KARTAL">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text layoutX="165.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6.25">
+                        <Text layoutX="160.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6.25">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -205,28 +173,28 @@
                   </AnchorPane>
               </content>
             </ScrollPane>
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="145.0" layoutX="398.0" layoutY="517.0" stroke="BLACK" strokeType="INSIDE" width="221.0" />
-            <Text layoutX="407.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ganhos Possiveis: 62.5">
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="145.0" layoutX="767.0" layoutY="525.0" stroke="BLACK" strokeType="INSIDE" width="221.0" />
+            <Text layoutX="776.0" layoutY="611.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ganhos Possiveis: 201.56">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="408.0" layoutY="572.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total das odds: 6.25">
+            <Text layoutX="777.0" layoutY="580.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total das odds: 20.156">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <TextField layoutX="472.0" layoutY="520.0" prefHeight="26.0" prefWidth="125.0" text="10">
+            <TextField layoutX="841.0" layoutY="528.0" prefHeight="26.0" prefWidth="125.0" text="10">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Text layoutX="407.0" layoutY="537.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aposta:">
+            <Text layoutX="776.0" layoutY="545.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aposta:">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Button layoutX="465.0" layoutY="617.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Apostar">
+            <Button layoutX="834.0" layoutY="625.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Apostar">
                <font>
                   <Font size="18.0" />
                </font>
@@ -241,6 +209,123 @@
                   <Font size="24.0" />
                </font>
             </Button>
+            <Text fill="WHITE" layoutX="28.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Competições Principais" wrappingWidth="306.33338928222656">
+               <font>
+                  <Font name="Bauhaus 93" size="24.0" />
+               </font>
+            </Text>
+            <Pane layoutX="24.0" layoutY="149.0" prefHeight="279.0" prefWidth="282.0">
+               <children>
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="219.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="279.0" />
+                  <Text layoutX="40.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premier League">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <EmojiOneView glyphName="STAR" layoutX="10.0" layoutY="31.0" size="20" wrappingWidth="19.00390625" />
+                  <Text layoutX="247.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="40.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serie A">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <EmojiOneView glyphName="STAR" layoutX="10.0" layoutY="75.0" size="20" wrappingWidth="19.00390625" />
+                  <Text layoutX="247.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="41.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La Liga">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <EmojiOneView glyphName="STAR" layoutX="11.0" layoutY="119.0" size="20" wrappingWidth="19.00390625" />
+                  <Text layoutX="247.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="41.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ligue 1">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <EmojiOneView glyphName="STAR" layoutX="11.0" layoutY="162.0" size="20" wrappingWidth="19.00390625" />
+                  <Text layoutX="247.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Text fill="WHITE" layoutX="774.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boletim de Apostas" wrappingWidth="240.13677978515625">
+               <font>
+                  <Font name="Bauhaus 93" size="24.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="91.0" layoutX="337.0" layoutY="264.0" stroke="BLACK" strokeType="INSIDE" width="410.0" />
+            <Text layoutX="352.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sporting">
+               <font>
+                  <Font name="Arial" size="22.0" />
+               </font>
+            </Text>
+            <Text layoutX="352.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Braga">
+               <font>
+                  <Font name="Arial" size="22.0" />
+               </font>
+            </Text>
+            <ToggleButton layoutX="654.0" layoutY="282.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="2.15">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton layoutX="482.0" layoutY="282.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.78">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </ToggleButton>
+            <Text layoutX="354.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="31 Fev 20:00" />
+            <ToggleButton layoutX="569.0" layoutY="282.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.90">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </ToggleButton>
+            <Pane layoutX="395.0" layoutY="376.0" prefHeight="73.0" prefWidth="337.0">
+               <children>
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="91.0" layoutX="-58.0" stroke="BLACK" strokeType="INSIDE" width="410.0" />
+                  <Text layoutX="-43.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vitoria FC">
+                     <font>
+                        <Font name="Arial" size="22.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="-43.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gil Vicente">
+                     <font>
+                        <Font name="Arial" size="22.0" />
+                     </font>
+                  </Text>
+                  <ToggleButton layoutX="259.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="4.25">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </ToggleButton>
+                  <ToggleButton layoutX="87.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="1.25">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </ToggleButton>
+                  <Text layoutX="-41.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="31 Fev 20:00" />
+                  <ToggleButton layoutX="174.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="2.00">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </ToggleButton>
+               </children>
+            </Pane>
       </children>
     </AnchorPane>
   </children>

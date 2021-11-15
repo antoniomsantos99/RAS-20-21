@@ -51,8 +51,8 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="687.0" VBox.vgrow="ALWAYS">
       <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c3c3c" height="687.0" layoutY="-24.0" stroke="BLACK" strokeType="INSIDE" width="1015.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" height="71.0" layoutX="1.0" layoutY="-5.0" stroke="BLACK" width="1013.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c3c3c" height="728.0" layoutY="-24.0" stroke="BLACK" strokeType="INSIDE" width="1034.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="72.0" layoutX="1.0" layoutY="-5.0" stroke="BLACK" width="1034.0">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0" startX="0.01895734597156401">
                      <stops>
@@ -100,7 +100,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Pane layoutX="231.0" layoutY="172.0">
+            <Pane layoutX="242.0" layoutY="214.0">
                <children>
                   <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="279.0" layoutX="-25.0" layoutY="-17.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                   <PasswordField layoutY="130.0" promptText="Password" />
@@ -113,7 +113,7 @@
                   </Button>
                </children>
             </Pane>
-            <Pane layoutX="634.0" layoutY="170.0">
+            <Pane layoutX="635.0" layoutY="211.0">
                <children>
                   <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="279.0" layoutX="-25.0" layoutY="-17.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                   <PasswordField layoutY="152.0" promptText="Password" />
