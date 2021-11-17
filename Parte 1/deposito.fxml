@@ -33,6 +33,7 @@
 -->
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -101,32 +102,32 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <TextField layoutX="314.0" layoutY="228.0" prefHeight="38.0" prefWidth="341.0" promptText="Valor" />
-            <Button ellipsisString="" layoutX="559.0" layoutY="222.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="231.0" style="-fx-background-color: transparent;" text="€" textFill="WHITE">
+            <TextField layoutX="313.0" layoutY="190.0" prefHeight="38.0" prefWidth="341.0" promptText="Valor" />
+            <Button ellipsisString="" layoutX="558.0" layoutY="184.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="231.0" style="-fx-background-color: transparent;" text="€" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button layoutX="315.0" layoutY="276.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="73.0" text="10€" />
-            <Button layoutX="404.0" layoutY="276.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="71.0" text="20€" />
-            <Button layoutX="493.0" layoutY="276.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="68.0" text="30€" />
-            <Button layoutX="581.0" layoutY="276.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="71.0" text="40€" />
-            <Button layoutX="359.0" layoutY="362.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" style="-fx-background-color: #ffffff;" text="Depositar">
+            <Button layoutX="314.0" layoutY="238.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="73.0" text="10€" />
+            <Button layoutX="403.0" layoutY="238.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="71.0" text="20€" />
+            <Button layoutX="492.0" layoutY="238.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="68.0" text="30€" />
+            <Button layoutX="580.0" layoutY="238.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="71.0" text="40€" />
+            <Button layoutX="360.0" layoutY="425.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" style="-fx-background-color: #ffffff;" text="Depositar">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <ImageView fitHeight="41.0" fitWidth="173.0" layoutX="320.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="41.0" fitWidth="136.0" layoutX="338.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Prints/paypal.png" />
                </image>
             </ImageView>
-            <Button ellipsisString="" layoutX="243.0" layoutY="421.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="403.0" style="-fx-background-color: transparent;" text="Método de pagamento disponível" textFill="WHITE">
+            <Button ellipsisString="" layoutX="243.0" layoutY="308.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="403.0" style="-fx-background-color: transparent;" text="Escolha o método de pagamento" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="499.0" layoutY="362.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" style="-fx-background-color: #ffffff;" text="Levantar">
+            <Button layoutX="499.0" layoutY="425.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" style="-fx-background-color: #ffffff;" text="Levantar">
                <font>
                   <Font size="18.0" />
                </font>
@@ -136,6 +137,13 @@
                   <Font size="18.0" />
                </font>
             </Button>
+            <ImageView fitHeight="41.0" fitWidth="136.0" layoutX="542.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Prints/mbway.png" />
+               </image>
+            </ImageView>
+            <RadioButton layoutX="315.0" layoutY="360.0" mnemonicParsing="false" />
+            <RadioButton layoutX="518.0" layoutY="362.0" mnemonicParsing="false" />
       </children>
     </AnchorPane>
   </children>
