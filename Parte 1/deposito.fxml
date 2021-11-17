@@ -103,7 +103,7 @@
                </font>
             </Button>
             <TextField layoutX="334.0" layoutY="191.0" prefHeight="38.0" prefWidth="341.0" promptText="Valor" />
-            <Button ellipsisString="" layoutX="558.0" layoutY="184.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="231.0" style="-fx-background-color: transparent;" text="€" textFill="WHITE">
+            <Button ellipsisString="" layoutX="567.0" layoutY="184.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="231.0" style="-fx-background-color: transparent;" text="€" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
