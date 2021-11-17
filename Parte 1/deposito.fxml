@@ -95,33 +95,43 @@
             </Button>
             <Pane layoutX="242.0" layoutY="214.0" />
             <Pane layoutX="635.0" layoutY="211.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="371.0" layoutX="249.0" layoutY="162.0" stroke="BLACK" strokeType="INSIDE" width="419.0" />
-            <Button ellipsisString="" layoutX="257.0" layoutY="173.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="231.0" style="-fx-background-color: transparent;" text="Valor a depositar" textFill="WHITE">
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="371.0" layoutX="283.0" layoutY="159.0" stroke="BLACK" strokeType="INSIDE" width="419.0" />
+            <Button ellipsisString="" layoutX="291.0" layoutY="170.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="231.0" style="-fx-background-color: transparent;" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <TextField layoutX="280.0" layoutY="231.0" prefHeight="38.0" prefWidth="341.0" promptText="Valor do depósito" />
-            <Button ellipsisString="" layoutX="525.0" layoutY="225.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="231.0" style="-fx-background-color: transparent;" text="€" textFill="WHITE">
+            <TextField layoutX="314.0" layoutY="228.0" prefHeight="38.0" prefWidth="341.0" promptText="Valor" />
+            <Button ellipsisString="" layoutX="559.0" layoutY="222.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="231.0" style="-fx-background-color: transparent;" text="€" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button layoutX="281.0" layoutY="279.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="73.0" text="10€" />
-            <Button layoutX="370.0" layoutY="279.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="71.0" text="20€" />
-            <Button layoutX="459.0" layoutY="279.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="68.0" text="30€" />
-            <Button layoutX="547.0" layoutY="279.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="71.0" text="40€" />
-            <Button layoutX="404.0" layoutY="364.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" style="-fx-background-color: #ffffff;" text="Continuar">
+            <Button layoutX="315.0" layoutY="276.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="73.0" text="10€" />
+            <Button layoutX="404.0" layoutY="276.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="71.0" text="20€" />
+            <Button layoutX="493.0" layoutY="276.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="68.0" text="30€" />
+            <Button layoutX="581.0" layoutY="276.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="71.0" text="40€" />
+            <Button layoutX="359.0" layoutY="362.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" style="-fx-background-color: #ffffff;" text="Depositar">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <ImageView fitHeight="41.0" fitWidth="173.0" layoutX="286.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="41.0" fitWidth="173.0" layoutX="320.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Prints/paypal.png" />
                </image>
             </ImageView>
-            <Button ellipsisString="" layoutX="209.0" layoutY="424.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="403.0" style="-fx-background-color: transparent;" text="Método de pagamento disponível" textFill="WHITE">
+            <Button ellipsisString="" layoutX="243.0" layoutY="421.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="403.0" style="-fx-background-color: transparent;" text="Método de pagamento disponível" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="499.0" layoutY="362.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" style="-fx-background-color: #ffffff;" text="Levantar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button ellipsisString="" layoutX="761.0" layoutY="18.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="129.0" style="-fx-background-color: transparent;" text="👛 Saldo: 0€" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
