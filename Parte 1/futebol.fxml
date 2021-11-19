@@ -64,9 +64,9 @@
                </font>
             </Text>
             <EmojiOneView fill="WHITE" glyphName="SOCCER" layoutX="464.0" layoutY="167.0" size="24" text="⚽" wrappingWidth="15.300000190734863" />
-            <ScrollPane accessibleRole="SCROLL_BAR" layoutX="333.0" layoutY="192.0" prefHeight="370.0" prefWidth="413.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <ScrollPane accessibleRole="SCROLL_BAR" layoutX="333.0" layoutY="192.0" prefHeight="323.0" prefWidth="429.0" style="-fx-background-color: transparent; -fx-background: transparent;">
                <content>
-                  <AnchorPane>
+                  <AnchorPane prefHeight="539.0" prefWidth="412.0">
                      <children>
                         <Pane layoutX="58.0" prefHeight="73.0" prefWidth="337.0">
                            <children>
@@ -167,7 +167,7 @@
             </ScrollPane>
             <ScrollPane layoutX="801.0" layoutY="191.0" prefHeight="340.0" prefWidth="249.0" style="-fx-background: #3c3c3c; -fx-background-color: #3c3c3c;">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="289.0" prefWidth="228.0" style="-fx-background: #ffff26; -fx-border: #3c3c3c;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="383.0" prefWidth="234.0" style="-fx-background: #ffff26; -fx-border: #3c3c3c;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#83b930" height="64.0" layoutX="17.0" layoutY="12.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#83b930" height="64.0" layoutX="16.0" layoutY="94.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
