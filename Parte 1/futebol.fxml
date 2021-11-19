@@ -34,9 +34,11 @@
 
 <?import de.jensd.fx.glyphs.emojione.EmojiOneView?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -326,6 +328,16 @@
                   </ToggleButton>
                </children>
             </Pane>
+            <ComboBox layoutX="663.0" layoutY="21.0" prefHeight="38.0" prefWidth="56.0" promptText="€" style="-fx-background-color: transparent;">
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ComboBox>
+            <ComboBox layoutX="722.0" layoutY="21.0" prefHeight="38.0" prefWidth="56.0" promptText="PT" style="-fx-background-color: transparent;">
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="1.0" />
+               </effect>
+            </ComboBox>
       </children>
     </AnchorPane>
   </children>

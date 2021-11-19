@@ -33,8 +33,10 @@
 -->
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -144,6 +146,16 @@
             </ImageView>
             <RadioButton layoutX="336.0" layoutY="361.0" mnemonicParsing="false" />
             <RadioButton layoutX="539.0" layoutY="363.0" mnemonicParsing="false" />
+            <ComboBox layoutX="654.0" layoutY="22.0" prefHeight="38.0" prefWidth="56.0" promptText="€" style="-fx-background-color: transparent;">
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ComboBox>
+            <ComboBox layoutX="711.0" layoutY="22.0" prefHeight="38.0" prefWidth="56.0" promptText="PT" style="-fx-background-color: transparent;">
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="1.0" />
+               </effect>
+            </ComboBox>
       </children>
     </AnchorPane>
   </children>
