@@ -32,6 +32,7 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -46,6 +47,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -53,93 +55,99 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="687.0" VBox.vgrow="ALWAYS">
       <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c3c3c" height="728.0" layoutY="-24.0" stroke="BLACK" strokeType="INSIDE" width="1034.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" height="72.0" layoutX="1.0" layoutY="-5.0" stroke="BLACK" width="1034.0">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0" startX="0.01895734597156401">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.5137255191802979" green="0.7254902124404907" blue="0.1882352977991104" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.18211805820465088" green="0.25" blue="0.0729166641831398" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Rectangle>
-            <Button ellipsisString="Tenis" layoutX="408.0" layoutY="11.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="91.0" style="-fx-background-color: transparent;" text="Ténis" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-            <Button ellipsisString="Registar" layoutX="876.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" style="-fx-background-color: transparent;" text="Registar" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-            <Button ellipsisString="Entrar" layoutX="772.0" layoutY="13.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="95.0" style="-fx-background-color: RGBA(0,0,0,0.2);" text="Entrar" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-            <Button ellipsisString="Futebol" layoutX="293.0" layoutY="11.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" style="-fx-background-color: transparent;" text="Futebol" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="87.0" fitWidth="181.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Prints/logosemfundo.png" />
-               </image>
-            </ImageView>
-            <Button ellipsisString="Futebol" layoutX="192.0" layoutY="11.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" style="-fx-background-color: transparent;" text="Home" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3b3b3bc7" height="728.0" layoutX="-1.0" layoutY="-24.0" stroke="BLACK" strokeType="INSIDE" width="1051.0" />
             <Pane layoutX="242.0" layoutY="214.0">
                <children>
-                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="279.0" layoutX="-25.0" layoutY="-17.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-                  <PasswordField layoutY="130.0" promptText="Password" />
-                  <TextField layoutY="83.0" promptText="Email ou username" />
-                  <Button layoutX="49.0" layoutY="188.0" mnemonicParsing="false" text="Login" />
-                  <Button ellipsisString="Futebol" layoutX="26.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" style="-fx-background-color: transparent;" text="Login" textFill="WHITE">
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#00000014" height="379.0" layoutX="-71.0" layoutY="-18.0" stroke="TRANSPARENT" strokeType="INSIDE" width="299.0" />
+                  <PasswordField layoutX="6.0" layoutY="147.0" promptText="Password" />
+                  <TextField layoutX="6.0" layoutY="105.0" promptText="Email ou username" />
+                  <Button layoutX="31.0" layoutY="256.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="92.0" style="-fx-background-color: #84b830;" text="Login" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="14.0" />
+                     </font></Button>
+                  <Button ellipsisString="Iniciar sessão" layoutX="-9.0" layoutY="-5.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" style="-fx-background-color: transparent;" text="Iniciar sessão" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Button>
                </children>
             </Pane>
+            <Group>
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="78.0" layoutX="-1.0" stroke="BLACK" width="1063.0">
+                     <fill>
+                        <LinearGradient endX="1.0" startX="0.01895734597156401">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.5137255191802979" green="0.7254902124404907" blue="0.1882352977991104" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.18211805820465088" green="0.25" blue="0.0729166641831398" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Button ellipsisString="Tenis" layoutX="391.5" layoutY="21.5" mnemonicParsing="false" prefHeight="44.0" prefWidth="91.0" style="-fx-background-color: transparent;" text="Ténis" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button ellipsisString="Entrar" layoutX="925.5" layoutY="23.5" mnemonicParsing="false" prefHeight="44.0" prefWidth="95.0" style="-fx-background-color: RGBA(0,0,0,0.2);" text="Entrar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button ellipsisString="Futebol" layoutX="305.5" layoutY="24.5" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" style="-fx-background-color: transparent;" text="Futebol" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="87.0" fitWidth="181.0" layoutX="0.5" layoutY="10.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Prints/logosemfundo.png" />
+                     </image>
+                  </ImageView>
+                  <Button ellipsisString="Futebol" layoutX="211.5" layoutY="24.5" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" style="-fx-background-color: RGBA(0,0,0,0);" text="Home" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <ComboBox layoutX="860.5" layoutY="27.5" prefHeight="38.0" prefWidth="56.0" promptText="PT" style="-fx-background-color: transparent;">
+                     <effect>
+                        <ColorAdjust brightness="1.0" contrast="1.0" />
+                     </effect>
+                  </ComboBox>
+                  <ComboBox layoutX="797.5" layoutY="27.5" prefHeight="38.0" prefWidth="56.0" promptText="€" style="-fx-background-color: rgba(0,1,0,0);">
+                     <effect>
+                        <ColorAdjust brightness="1.0" />
+                     </effect>
+                  </ComboBox>
+               </children>
+            </Group>
+            <Line endX="-100.0" endY="435.0" layoutX="622.0" layoutY="177.0" startX="-100.0" startY="-14.333328247070312" stroke="#00000066" strokeWidth="3.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#00000014" height="377.0" layoutX="571.0" layoutY="198.0" stroke="TRANSPARENT" strokeType="INSIDE" width="299.0" />
             <Pane layoutX="635.0" layoutY="211.0">
                <children>
-                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#83b930" height="279.0" layoutX="-25.0" layoutY="-17.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-                  <PasswordField layoutY="152.0" promptText="Password" />
-                  <TextField layoutY="83.0" promptText="Email" />
-                  <Button layoutX="49.0" layoutY="188.0" mnemonicParsing="false" text="Registar" />
-                  <Button ellipsisString="" layoutX="10.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="128.0" style="-fx-background-color: transparent;" text="Registar" textFill="WHITE">
+                  <PasswordField layoutX="10.0" layoutY="201.0" promptText="Password" />
+                  <TextField layoutX="10.0" layoutY="132.0" promptText="Email" />
+                  <Button layoutX="47.0" layoutY="259.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="83.0" style="-fx-background-color: #84b830;" text="Registar" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-                  <TextField layoutY="48.0" promptText="Username" />
-                  <DatePicker layoutY="115.0" prefHeight="25.0" prefWidth="149.0" promptText="AAAA-MM-DD" />
+                        <Font name="System Bold" size="14.0" />
+                     </font></Button>
+                  <TextField layoutX="10.0" layoutY="97.0" promptText="Username" />
+                  <DatePicker layoutX="10.0" layoutY="164.0" prefHeight="25.0" prefWidth="149.0" promptText="AAAA-MM-DD" />
                </children>
             </Pane>
-            <ComboBox layoutX="645.0" layoutY="23.0" prefHeight="38.0" prefWidth="56.0" promptText="€" style="-fx-background-color: transparent;">
-               <effect>
-                  <ColorAdjust brightness="1.0" />
-               </effect>
-            </ComboBox>
-            <ComboBox layoutX="704.0" layoutY="23.0" prefHeight="38.0" prefWidth="56.0" promptText="PT" style="-fx-background-color: transparent;">
-               <effect>
-                  <ColorAdjust brightness="1.0" contrast="1.0" />
-               </effect>
-            </ComboBox>
+            <Button ellipsisString="" layoutX="642.0" layoutY="209.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Registar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
       </children>
     </AnchorPane>
   </children>
