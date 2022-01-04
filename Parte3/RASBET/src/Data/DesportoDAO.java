@@ -10,26 +10,6 @@ public class DesportoDAO implements Map<String, Desporto> {
         private static DesportoDAO singleton = null;
 
 
-        private DesportoDAO() {
-            try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
-                 Statement stm = conn.createStatement()) {
-                String sql = "CREATE TABLE IF NOT EXISTS desporto (" +
-                        "id varchar(7) NOT NULL PRIMARY KEY," +
-                        "nome varchar(45) NOT NULL)";
-                stm.executeUpdate(sql);
-                sql = "CREATE TABLE IF NOT EXISTS competicao (" +
-                        "id VARCHAR(7) NOT NULL PRIMARY KEY," +
-                        "nome VARCHAR(45) NOT NULL";
-                stm.executeUpdate(sql);
-                sql = "CREATE TABLE IF NOT EXISTS competicao (" +
-                        "idCompeticao VARCHAR(7) NOT NULL PRIMARY KEY," +
-                        "nome VARCHAR(45) NOT NULL";
-            } catch (SQLException e) {
-                // Erro a criar tabela...
-                e.printStackTrace();
-                throw new NullPointerException(e.getMessage());
-            }
-        }
     /**
      * Implementação do padrão Singleton
      *
@@ -50,7 +30,7 @@ public class DesportoDAO implements Map<String, Desporto> {
         int i = 0;
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
              Statement stm = conn.createStatement();
-             ResultSet rs = stm.executeQuery("SELECT count(*) FROM desporto")) {
+             ResultSet rs = stm.executeQuery("SELECT count(*) FROM Desporto")) {
             if(rs.next()) {
                 i = rs.getInt(1);
             }
@@ -86,7 +66,7 @@ public class DesportoDAO implements Map<String, Desporto> {
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
              Statement stm = conn.createStatement();
              ResultSet rs =
-                     stm.executeQuery("SELECT id FROM desporto WHERE id='"+idD.toString()+"'")) {
+                     stm.executeQuery("SELECT id FROM Desporto WHERE id='" + idD.toString() + "'")) {
             r = rs.next();
         } catch (SQLException e) {
             // Database error!
@@ -126,7 +106,7 @@ public class DesportoDAO implements Map<String, Desporto> {
         Desporto a = null;
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
              Statement stm = conn.createStatement();
-             ResultSet rs = stm.executeQuery("SELECT * FROM desporto WHERE id='"+id+"'")) {
+             ResultSet rs = stm.executeQuery("SELECT * FROM Desporto WHERE id='" + id + "'")) {
             if (rs.next()) {  // A chave existe na tabela
                 a = new Desporto(rs.getString("nome"), rs.getInt("id"));
             }
@@ -148,7 +128,7 @@ public class DesportoDAO implements Map<String, Desporto> {
 
             // Actualizar a Desporto
             stm.executeUpdate(
-                    "INSERT INTO desporto VALUES ('"+d.getId()+"', '"+d.getNome() +"' ) ");
+                    "INSERT INTO Desporto VALUES ('" + d.getId() + "', '" + d.getNome() + "' ) ");
         } catch (SQLException e) {
             // Database error!
             e.printStackTrace();
@@ -170,7 +150,7 @@ public class DesportoDAO implements Map<String, Desporto> {
         Desporto t = this.get(code);
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
              Statement stm = conn.createStatement()) {
-            stm.executeUpdate("DELETE FROM desporto WHERE id='"+code+"'");
+            stm.executeUpdate("DELETE FROM Desporto WHERE id='" + code + "'");
         } catch (Exception e) {
             // Database error!
             e.printStackTrace();
@@ -201,7 +181,7 @@ public class DesportoDAO implements Map<String, Desporto> {
     public void clear() {
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
              Statement stm = conn.createStatement()) {
-            stm.executeUpdate("TRUNCATE desporto");
+            stm.executeUpdate("TRUNCATE Desporto");
         } catch (SQLException e) {
             // Database error!
             e.printStackTrace();
@@ -231,14 +211,14 @@ public class DesportoDAO implements Map<String, Desporto> {
     }
 
     /**
-     * @return Todas as Desportos da base de dados
+     * @return Todas os Desportos da base de dados
      */
     @Override
     public Collection<Desporto> values() {
         Collection<Desporto> col = new HashSet<>();
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
              Statement stm = conn.createStatement();
-             ResultSet rs = stm.executeQuery("SELECT id FROM desporto")) {
+             ResultSet rs = stm.executeQuery("SELECT id FROM Desporto")) {
             while (rs.next()) {   // Utilizamos o get para construir os desportos
                 col.add(this.get(rs.getString("id")));
             }
@@ -255,7 +235,7 @@ public class DesportoDAO implements Map<String, Desporto> {
         Set<Entry<String, Desporto>> setReturn = new HashSet<Map.Entry<String, Desporto>>();
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
              Statement stm = conn.createStatement();
-             ResultSet rs = stm.executeQuery("SELECT id FROM desportos")) {
+             ResultSet rs = stm.executeQuery("SELECT id FROM Desporto")) {
             while(rs.next()){
                 Map.Entry<String, Desporto> entry = new HashMap.SimpleEntry<String, Desporto>(rs.getString("id"), this.get(rs.getString("id")));
                 setReturn.add(entry);

@@ -6,16 +6,16 @@ import java.util.Date;
 import java.util.Objects;
 
 public class UtilizadorAutenticado extends Utilizador {
-    private String nome;
+    private String username;
     private String email;
     private String password;
     private Date data_nascimento;
-    private Float saldo;
-    private ArrayList<Aposta> historico;
+    private Carteira carteira;
+    private List<Aposta> historico;
 
     public UtilizadorAutenticado(){
         super();
-        this.nome = new String();
+        this.username = new String();
         this.email = new String();
         this.password= new String();
         this.data_nascimento = new Date();
@@ -24,19 +24,19 @@ public class UtilizadorAutenticado extends Utilizador {
 
     }
 
-    public UtilizadorAutenticado(Boolean lg,String n, String e, String p, Date dt, Float s){
+    public UtilizadorAutenticado(Boolean lg,String n, String e, String p, Date dt, Carteira c, List<Aposta> hist){
         super(lg);
-        this.nome = n;
+        this.username = n;
         this.email=e;
         this.password=p;
         this.data_nascimento=dt;
-        this.saldo=s;
-        this.historico= new ArrayList<Aposta>();
+        this.carteira = c;
+        this.historico= hist;
     }
 
     public UtilizadorAutenticado(UtilizadorAutenticado u){
         super(u);
-        setNome(u.getNome());
+        setUsername(u.getUsername());
         setEmail(u.getEmail());
         setPassword(u.getPassword());
         setData_nascimento(u.getData_nascimento());
@@ -44,8 +44,8 @@ public class UtilizadorAutenticado extends Utilizador {
         setHistorico(u.getHistorico());
     }
 
-    public String getNome() {
-        return nome;
+    public String getUsername() {
+        return username;
     }
 
     public String getEmail() {
@@ -72,8 +72,8 @@ public class UtilizadorAutenticado extends Utilizador {
         return historico;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setEmail(String email) {
@@ -84,8 +84,8 @@ public class UtilizadorAutenticado extends Utilizador {
         this.password = password;
     }
 
-    public void setSaldo(Float saldo) {
-        this.saldo = saldo;
+    public void setCarteira(Carteira carteira
+        this.carteira = carteira;
     }
 
     public void setData_nascimento(Date data_nascimento) {
@@ -99,10 +99,13 @@ public class UtilizadorAutenticado extends Utilizador {
             this.historico.add(a);
     }
 
+
+public 
+
     @Override
     public String toString() {
         return "UtilizadorAutenticado{" +
-                "nome='" + nome + '\'' +
+                "username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", data_nascimento=" + data_nascimento +
@@ -117,7 +120,7 @@ public class UtilizadorAutenticado extends Utilizador {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         UtilizadorAutenticado that = (UtilizadorAutenticado) o;
-        return Objects.equals(nome, that.nome)
+        return Objects.equals(username, that.username)
                 && Objects.equals(email, that.email)
                 && Objects.equals(password, that.password)
                 && Objects.equals(data_nascimento, that.data_nascimento)

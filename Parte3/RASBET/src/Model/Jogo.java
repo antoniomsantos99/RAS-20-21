@@ -4,87 +4,119 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Jogo {
-    private Integer id;
-    private Date data;
-    private String estado;
-    private ArrayList<String> participantes;
-    private ArrayList<Float> odds;
+    private int id;
+    private Competicao competicao;
+    private List<String> participantes;
+    private List<Float> odds;
     private String resultado;
+    private Date data;
+    private String localizacao;
 
 
     public Jogo(){
         this.id=0;
-        this.data= new Date();
-        this.estado = new String();
-        this.resultado = new String();
+        this.competicao = new Competicao();
         this.participantes= new ArrayList<>();
         this.odds= new ArrayList<>();
+        this.resultado = new String();
+        this.data= new Date();
+        this.localizacao = new String();
     }
 
-    public Jogo(Integer id, Date dt, String e, ArrayList<String> p, ArrayList<Float> o,String r){
+    public Jogo(int id, int competicao, ArrayList<String> p, ArrayList<Float> o, String r, Date dt, String l){
         this.id=id;
-        this.data= dt;
-        this.estado = e;
-        this.resultado = r;
+        this.competicao = competicao;
         setParticipantes(p);
         setOdds(o);
+        this.resultado = r;
+        this.data= dt;
+        this.localizacao = l;
+        
     }
     public Jogo(Jogo j){
         this.id=j.getId();
-        this.data= j.getData();
-        this.estado = j.getEstado();
-        this.resultado = j.getResultado();
-        this.odds=j.getOdds();
+        this.competicao = j.getCompeticao;
         this.participantes=j.getParticipantes();
+        this.odds=j.getOdds();
+        this.resultado = j.getResultado();
+        this.data= j.getData();
+        this.localizacao = j.getLocalizacao();
+    }
+
+
+    // SETS ---------------------------------------
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCompeticao(Competicao ompeticao) {
+        this.competicao = competicao;
+    }
+
+    public void setParticipantes(List<String> part) {
+        this.participantes = new ArrayList<>();
+        for(String p : part)
+            this.participantes.add(p);
+    }
+
+    public void setOdds(ArrayList<Float> odds) {
+        this.odds = new ArrayList<>();
+        for(Integer o : odds)
+            this.odds.add(o);
     }
 
     public void setResultado(String resultado) {
         this.resultado = resultado;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public void setData(Date data) {
         this.data = data;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setLocalizacao(String localizacao) {
+        this.localizacao = localizacao;
     }
 
-    public void setOdds(ArrayList<Float> odds) {
-        this.odds = odds;
+
+    // GETS ---------------------------------------
+
+    public int getId() {
+        return id;
     }
 
-    public void setParticipantes(ArrayList<String> participantes) {
-        this.participantes = participantes;
+    public int getCompeticao() {
+        return competicao;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public ArrayList<Float> getOdds() {
-        return odds;
-    }
-
-    public ArrayList<String> getParticipantes() {
+    public List<String> getParticipantes() {
+        List<String> participantes = new ArrayList<>();
+        for(String p : this.participantes)
+            competicoes.add(p.clone());
         return participantes;
     }
 
-    public Integer getId() {
-        return id;
+    public List<String> getOdds() {
+        List<Integer> odds = new ArrayList<>();
+        for(Integer o : this.odds)
+            odds.add(o.clone());
+        return odds;
     }
 
     public String getResultado() {
         return resultado;
     }
+
+    public Date     () {
+        return data;
+    }
+
+    public String getLocalizacao() {
+        return localizacao;
+    }
+
+    
+    
 
 
     protected Jogo clone()  {
