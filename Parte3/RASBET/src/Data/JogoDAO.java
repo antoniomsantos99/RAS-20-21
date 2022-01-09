@@ -3,7 +3,14 @@ package Data;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class JogoDAO {
+import Model.Competicao;
+import Model.Jogo;
+import java.sql.*;
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class JogoDAO implements Map<String, Jogo> {
+    private static JogoDAO singleton = null;
 
 
     /**
@@ -52,7 +59,7 @@ public class JogoDAO {
     /**
      * Método que verifica se um id de um Jogo existe na base de dados
      *
-     * @param idD Jogo
+     * @param idJ Jogo
      * @return true se o Jogo existe
      * @throws NullPointerException
      */
@@ -100,14 +107,13 @@ public class JogoDAO {
     @Override
     public Jogo get(Object id) {
         Jogo a = null;
-        Float odd1, odd2, odd3;
-        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
+        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD){
              Statement stm = conn.createStatement();
-             ResultSet rs = stm.executeQuery("SELECT * FROM Jogo WHERE id='" + id + "'")) {
-            if (rs.next()) {  // A chave existe na tabela
-                a = new Jogo(rs.getInt("id"), rs.getInt("id"), rs.getInt("Participante1"),rs.getInt("Participante2"), rs.getFloat("Odd1") ,rs.getFloat("Odd2")  ,rs.getFloat("Odd3")  ,rs.getString("resultado"),rs.getTimestamp("data") ,rs.getString("localizacao"));
+             ResultSet rs = stm.executeQuery("SELECT * FROM Jogo WHERE id='" + id + "'");
+             if (rs.next()) {  // A chave existe na tabela
+                a = new Jogo(rs.getInt("id"),rs.getString("participante1"),rs.getString("participante2"), rs.getFloat("Odd1") ,rs.getFloat("Odd2")  ,rs.getFloat("Odd3")  ,rs.getString("resultado"),rs.getTimestamp("data") ,rs.getString("localizacao"));
             }
-        } catch (SQLException e) {
+         } catch(SQLException e) {
             // Database error!
             e.printStackTrace();
             throw new NullPointerException(e.getMessage());
@@ -116,76 +122,15 @@ public class JogoDAO {
     }
 
 
-
-    @Override
-    public Jogo put(String idD, Jogo j) {
-        Jogo res = null;
-        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
-             Statement stm = conn.createStatement()) {
-
-            // Actualizar a Jogo
-            stm.executeUpdate(
-                    "INSERT INTO Jogo VALUES ('" + j.getId() + "', '" + j.getCompeticao() + "," + j.getParticipantes() + "," + 
-                                                j.getOdds() + "," + j.getResultado() + "," + j.getData() + "' ) ");
-        } catch (SQLException e) {
-            // Database error!
-            e.printStackTrace();
-            throw new NullPointerException(e.getMessage());
-        }
-        return res;
+    public ArrayList<Jogo> getJogos(ArrayList<Integer> ids){
+        return ids.stream().map(e->get(e)).collect(Collectors.toCollection(ArrayList::new));
     }
 
 
-    /**
-     * Remover um Jogo, dado o seu id
-     *
-     * @param code id do Jogo a remover
-     * @return Jogo removido
-     * @throws NullPointerException
-     */
-    @Override
-    public Desporto remove(Object code) {
-        Desporto t = this.get(code);
-        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
-             Statement stm = conn.createStatement()) {
-            stm.executeUpdate("DELETE FROM Jogo WHERE id='" + code + "'");
-        } catch (Exception e) {
-            // Database error!
-            e.printStackTrace();
-            throw new NullPointerException(e.getMessage());
-        }
-        return t;
-    }
 
-    /**
-     * Adicionar um conjunto de Jogo à base de dados
-     *
-     * @param jogos a adicionar
-     * @throws NullPointerException
-     */
-    @Override
-    public void putAll(Map<? extends String,? extends Jogo> jogos) {
-        for(Jogo p : jogos.values()) {
-            this.put(Integer.toString(p.getId()), p);
-        }
-    }
 
-    /**
-     * Apagar todas os Jogos
-     *
-     * @throws NullPointerException
-     */
-    @Override
-    public void clear() {
-        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
-             Statement stm = conn.createStatement()) {
-            stm.executeUpdate("TRUNCATE Jogo");
-        } catch (SQLException e) {
-            // Database error!
-            e.printStackTrace();
-            throw new NullPointerException(e.getMessage());
-        }
-    }
+
+
 
     /**
      *

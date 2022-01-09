@@ -2,12 +2,15 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Jogo {
     private int id;
-    private Competicao competicao;
-    private List<String> participantes;
-    private List<Float> odds;
+    private String participante1;
+    private String participante2;
+    private float odd1;
+    private float odd2;
+    private float odd3;
     private String resultado;
     private Date data;
     private String localizacao;
@@ -15,19 +18,23 @@ public class Jogo {
 
     public Jogo(){
         this.id=0;
-        this.competicao = new Competicao();
-        this.participantes= new ArrayList<>();
-        this.odds= new ArrayList<>();
+        this.participante1 = new String();
+        this.participante2 = new String();
+        this.odd1= 0f;
+        this.odd2= 0f;
+        this.odd3= 0f;
         this.resultado = new String();
         this.data= new Date();
         this.localizacao = new String();
     }
 
-    public Jogo(int id, int competicao, ArrayList<String> p, ArrayList<Float> o, String r, Date dt, String l){
+    public Jogo(int id, String p1, String p2,float o1,float o2,float o3, String r, Date dt, String l){
         this.id=id;
-        this.competicao = competicao;
-        setParticipantes(p);
-        setOdds(o);
+        this.participante1 = p1;
+        this.participante2 = p2;
+        this.odd1=o1;
+        this.odd2=o2;
+        this.odd3=o3;
         this.resultado = r;
         this.data= dt;
         this.localizacao = l;
@@ -35,9 +42,11 @@ public class Jogo {
     }
     public Jogo(Jogo j){
         this.id=j.getId();
-        this.competicao = j.getCompeticao;
-        this.participantes=j.getParticipantes();
-        this.odds=j.getOdds();
+        this.participante1=j.getParticipante1();
+        this.participante2=j.getParticipante2();
+        this.odd1=j.getOdd1();
+        this.odd2=j.getOdd2();
+        this.odd3=j.getOdd3();
         this.resultado = j.getResultado();
         this.data= j.getData();
         this.localizacao = j.getLocalizacao();
@@ -50,20 +59,26 @@ public class Jogo {
         this.id = id;
     }
 
-    public void setCompeticao(Competicao ompeticao) {
-        this.competicao = competicao;
+
+
+    public float getOdd1() {
+        return odd1;
     }
 
-    public void setParticipantes(List<String> part) {
-        this.participantes = new ArrayList<>();
-        for(String p : part)
-            this.participantes.add(p);
+    public float getOdd2() {
+        return odd2;
     }
 
-    public void setOdds(ArrayList<Float> odds) {
-        this.odds = new ArrayList<>();
-        for(Integer o : odds)
-            this.odds.add(o);
+    public float getOdd3() {
+        return odd3;
+    }
+
+    public String getParticipante1() {
+        return participante1;
+    }
+
+    public String getParticipante2() {
+        return participante2;
     }
 
     public void setResultado(String resultado) {
@@ -85,39 +100,30 @@ public class Jogo {
         return id;
     }
 
-    public int getCompeticao() {
-        return competicao;
+
+    public void setOdd1(float odd1) {
+        this.odd1 = odd1;
     }
 
-    public List<String> getParticipantes() {
-        List<String> participantes = new ArrayList<>();
-        for(String p : this.participantes)
-            competicoes.add(p.clone());
-        return participantes;
+    public void setOdd2(float odd2) {
+        this.odd2 = odd2;
     }
 
-    public List<String> getOdds() {
-        List<Integer> odds = new ArrayList<>();
-        for(Integer o : this.odds)
-            odds.add(o.clone());
-        return odds;
+    public void setOdd3(float odd3) {
+        this.odd3 = odd3;
     }
 
     public String getResultado() {
         return resultado;
     }
 
-    public Date     () {
+    public Date getData() {
         return data;
     }
 
     public String getLocalizacao() {
         return localizacao;
     }
-
-    
-    
-
 
     protected Jogo clone()  {
         return new Jogo(this);

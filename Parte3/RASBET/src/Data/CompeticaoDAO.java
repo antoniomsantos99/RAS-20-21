@@ -2,6 +2,7 @@ package Data;
 
 import Model.Competicao;
 
+import Model.Desporto;
 import java.sql.*;
 import java.util.Map;
 
@@ -107,7 +108,7 @@ public class CompeticaoDAO implements Map<String, Competicao> {
              Statement stm = conn.createStatement();
              ResultSet rs = stm.executeQuery("SELECT * FROM Competicao WHERE id='" + id + "'")) {
             if (rs.next()) {  // A chave existe na tabela
-                d.get(rs.getInt("desporto"));
+                d.(rs.getInt("desporto"));
                 a = new Competicao(rs.getString("nome"), rs.getInt("id"), d));
             }
         } catch (SQLException e) {

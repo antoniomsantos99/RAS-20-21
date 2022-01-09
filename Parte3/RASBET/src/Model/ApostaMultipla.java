@@ -1,48 +1,55 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ApostaMultipla extends Aposta{
-    private Float totalOdds;
-    private ArrayList<ApostaSimples> apostas;
+    private List<Integer> opcoes;
+    private ArrayList<Jogo> jogos;
 
     public ApostaMultipla(){
         super();
-        this.totalOdds=(float)0;
-        this.apostas= new ArrayList<ApostaSimples>();
+        this.opcoes= new ArrayList<>();
+        this.jogos= new ArrayList<>();
     }
-    public ApostaMultipla(String e, Boolean rs, Float vA, Float gP, String participante,Float to){
-        super(e,rs,vA,gP,participante);
-        setTotalOdds(to);
-        this.apostas= new ArrayList<ApostaSimples>();
+    public ApostaMultipla(String e, Float vA,ArrayList<Jogo> jgs, ArrayList<Integer> op){
+        super(e,vA);
+        setJogos(jgs);
+        setOp(op);
     }
     public ApostaMultipla(ApostaMultipla a){
         super(a);
-        setTotalOdds(a.getTotalOdds());
-        setApostas(a.getApostas());
+        setJogos(a.getJogos());
+        setOp(a.getOp());
     }
 
-    public void setTotalOdds(Float totalOdds) {
-        this.totalOdds = totalOdds;
-    }
-
-    public Float getTotalOdds() {
-        return totalOdds;
-    }
-
-
-    public ArrayList<ApostaSimples> getApostas() {
-        ArrayList<ApostaSimples> ap= new ArrayList<>();
-        for(ApostaSimples a : this.apostas)
+    public ArrayList<Jogo> getJogos() {
+        ArrayList<Jogo> ap= new ArrayList<>();
+        for(Jogo a : this.jogos)
             ap.add(a.clone());
         return ap;
     }
 
 
-    public void setApostas(ArrayList<ApostaSimples> aps) {
-        this.apostas=new ArrayList<>();
-        for(ApostaSimples a : aps)
-            this.apostas.add(a);
+    public ArrayList<Integer> getOp() {
+        ArrayList<Integer> ap= new ArrayList<>();
+        for(Integer a : this.opcoes)
+            ap.add(a);
+        return ap;
+    }
+
+
+    public void setOp(ArrayList<Integer> aps) {
+        this.opcoes=new ArrayList<>();
+        for(Integer a : aps)
+            this.opcoes.add(a);
+    }
+
+
+    public void setJogos(ArrayList<Jogo> aps) {
+        this.jogos=new ArrayList<>();
+        for(Jogo a : aps)
+            this.jogos.add(a);
     }
 
 

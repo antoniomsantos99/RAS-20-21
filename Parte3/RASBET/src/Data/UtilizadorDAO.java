@@ -1,13 +1,16 @@
 package Data;
 
+import Model.Aposta;
+import Model.Carteira;
 import Model.Utilizador;
 import Model.UtilizadorAutenticado;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Map;
 
 
-public class UtilizadorDAO implements Map<String, Utilizador> {
+public class UtilizadorDAO implements Map<String, UtilizadorAutenticado> {
     private static UtilizadorDAO singleton = null;
 
     
@@ -57,16 +60,16 @@ public class UtilizadorDAO implements Map<String, Utilizador> {
     /**
      * Método que verifica se um id de um desporto existe na base de dados
      *
-     * @param idU utilizador
+     * @param email utilizador
      * @return true se o utilizador existe
      * @throws NullPointerException
-     *
+     */
     @Override
-    public boolean containsKey(Object idU) {
+    public boolean containsKey(Object email) {
         boolean r;
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
              Statement stm = conn.createStatement();
-             ResultSet rs = stm.executeQuery("SELECT id FROM Utilizador WHERE id='" + idU.toString() + "'")) {
+             ResultSet rs = stm.executeQuery("SELECT id FROM Utilizador WHERE email='" + email.toString() + "'")) {
              r = rs.next();
         } catch (SQLException e) {
             // Database error!
@@ -76,17 +79,17 @@ public class UtilizadorDAO implements Map<String, Utilizador> {
         return r;
     }
 
-    
+    /**
      * Verifica se um Utilizador existe na base de dados
      *
      * @param value
      * @return true caso o Utilizador exista, false caso contrario
      * @throws NullPointerException
-     *
+     **/
     @Override
     public boolean containsValue(Object value) {
-        Utilizador a = (Utilizador) value;
-        Utilizador g = this.get(a.getId());
+        UtilizadorAutenticado a = (UtilizadorAutenticado) value;
+        UtilizadorAutenticado g = this.get(a.getEmail());
         if (g == null){
             return false;
         } else {
@@ -97,20 +100,21 @@ public class UtilizadorDAO implements Map<String, Utilizador> {
     /**
      * Obter um Utilizador, dado o seu id
      *
-     * @param id id do Utilizador
+     * @param email id do Utilizador
      * @return o Utilizador caso exista (null noutro caso)
      * @throws NullPointerException
-     *
+     **/
     @Override
-    public Utilizador get(Object id) {
-        Utilizador a = null;
-        Carteira c = null;
+    public UtilizadorAutenticado get(Object email) {
+        UtilizadorAutenticado a = null;
+        Aposta ap = null;
+        ArrayList<Aposta> apostas = new ArrayList<>();
+        Carteira c = new Carteira();
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
              Statement stm = conn.createStatement();
-             ResultSet rs = stm.executeQuery("SELECT * FROM Utilizador WHERE id='" + id + "'")) {
-            if (rs.next()) {  // A chave existe na tabela
-        
-                a = new UtilizadorAutenticado(rs.getString("username"), rs.getString("email"),  rs.getString("password"), );
+             ResultSet rs = stm.executeQuery("SELECT * FROM Utilizador WHERE email='" + email + "'")) {
+             if (rs.next()) {  // A chave existe na tabela
+                 a = new UtilizadorAutenticado(rs.getString("username"), rs.getString("email"),  rs.getString("password"),c,apostas);
             }
         } catch (SQLException e) {
             // Database error!

@@ -22,21 +22,6 @@ public class Competicao {
         this.id=c.getId();
         this.desporto = c.getDesporto();
     }
-/*
-    public void setJogo(ArrayList<Jogo> jogos) {
-        this.jogos=new ArrayList<>();
-        for(Jogo j : jogos)
-            this.jogos.add(j);
-    }
-
-
-    public ArrayList<Jogo> getJogos() {
-        ArrayList<Jogo> jogos= new ArrayList<>();
-        for(Jogo j: this.jogos)
-            jogos.add(j.clone());
-        return jogos;
-    }
-*/
 
     public String getNome() {
         return nome;
@@ -59,7 +44,7 @@ public class Competicao {
         this.nome = nome;
     }
 
-    public int setDesporto() {
+    public void setDesporto() {
         this.desporto = desporto;
     }
 

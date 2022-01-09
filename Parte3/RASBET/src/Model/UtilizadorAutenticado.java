@@ -11,7 +11,7 @@ public class UtilizadorAutenticado extends Utilizador {
     private String password;
     private Date data_nascimento;
     private Carteira carteira;
-    private List<Aposta> historico;
+    private ArrayList<Aposta> historico;
 
     public UtilizadorAutenticado(){
         super();
@@ -19,17 +19,16 @@ public class UtilizadorAutenticado extends Utilizador {
         this.email = new String();
         this.password= new String();
         this.data_nascimento = new Date();
-        this.saldo = (float)0;
-        this.historico = new ArrayList<Aposta>();
+        this.carteira = new Carteira();
+        this.historico = new ArrayList<>();
 
     }
 
-    public UtilizadorAutenticado(Boolean lg,String n, String e, String p, Date dt, Carteira c, List<Aposta> hist){
+    public UtilizadorAutenticado(Boolean lg,String n, String e, String p, Carteira c, ArrayList<Aposta> hist){
         super(lg);
         this.username = n;
         this.email=e;
         this.password=p;
-        this.data_nascimento=dt;
         this.carteira = c;
         this.historico= hist;
     }
@@ -39,8 +38,6 @@ public class UtilizadorAutenticado extends Utilizador {
         setUsername(u.getUsername());
         setEmail(u.getEmail());
         setPassword(u.getPassword());
-        setData_nascimento(u.getData_nascimento());
-        setSaldo(u.getSaldo());
         setHistorico(u.getHistorico());
     }
 
@@ -60,9 +57,6 @@ public class UtilizadorAutenticado extends Utilizador {
         return data_nascimento;
     }
 
-    public Float getSaldo() {
-        return saldo;
-    }
 
 
     public ArrayList<Aposta> getHistorico() {
@@ -84,7 +78,7 @@ public class UtilizadorAutenticado extends Utilizador {
         this.password = password;
     }
 
-    public void setCarteira(Carteira carteira
+    public void setCarteira(Carteira carteira) {
         this.carteira = carteira;
     }
 
@@ -100,8 +94,6 @@ public class UtilizadorAutenticado extends Utilizador {
     }
 
 
-public 
-
     @Override
     public String toString() {
         return "UtilizadorAutenticado{" +
@@ -109,7 +101,6 @@ public
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", data_nascimento=" + data_nascimento +
-                ", saldo=" + saldo +
                 ", historico=" + historico +
                 '}';
     }
@@ -124,7 +115,6 @@ public
                 && Objects.equals(email, that.email)
                 && Objects.equals(password, that.password)
                 && Objects.equals(data_nascimento, that.data_nascimento)
-                && Objects.equals(saldo, that.saldo)
                 && Objects.equals(historico, that.historico);
     }
 
