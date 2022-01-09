@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class ApostaDAO implements Map<String, Aposta> {
+public class ApostaDAO {
     private static ApostaDAO singleton = null;
 
     public static ApostaDAO getInstance() {
@@ -22,7 +22,7 @@ public class ApostaDAO implements Map<String, Aposta> {
     /**
      * @return número de desportos na base de dados
      */
-    @Override
+
     public int size() {
         int i = 0;
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
@@ -45,7 +45,7 @@ public class ApostaDAO implements Map<String, Aposta> {
      *
      * @return true se existirem 0 desportos
      */
-    @Override
+
     public boolean isEmpty() {
         return this.size() == 0;
     }
@@ -57,7 +57,7 @@ public class ApostaDAO implements Map<String, Aposta> {
      * @return true se o desporto existe
      * @throws NullPointerException
      */
-    @Override
+
     public boolean containsKey(Object idD) {
         boolean r;
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
@@ -80,7 +80,7 @@ public class ApostaDAO implements Map<String, Aposta> {
      * @return true caso o Aposta exista, false caso contrario
      * @throws NullPointerException
      */
-    @Override
+
     public boolean containsValue(Object value) {
         Aposta a = (Aposta) value;
         Aposta g = this.get(a.getId());
@@ -98,7 +98,7 @@ public class ApostaDAO implements Map<String, Aposta> {
      * @return o Desporto caso exista (null noutro caso)
      * @throws NullPointerException
      */
-    @Override
+
     public Aposta get(Object id) {
         Aposta a = null;
         ArrayList<Integer> i = new ArrayList<>();

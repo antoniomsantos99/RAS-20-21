@@ -8,9 +8,10 @@ import Model.UtilizadorAutenticado;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.*;
 
 
-public class UtilizadorDAO implements Map<String, UtilizadorAutenticado> {
+public class UtilizadorDAO{
     private static UtilizadorDAO singleton = null;
 
     
@@ -29,7 +30,7 @@ public class UtilizadorDAO implements Map<String, UtilizadorAutenticado> {
     /**
      * @return número de utilizadores na base de dados
      */
-    @Override
+
     public int size() {
         int i = 0;
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
@@ -51,7 +52,7 @@ public class UtilizadorDAO implements Map<String, UtilizadorAutenticado> {
      *
      * @return true se existirem 0 utiliazdores
      */
-    @Override
+
     public boolean isEmpty() {
         return this.size() == 0;
     }
@@ -64,7 +65,7 @@ public class UtilizadorDAO implements Map<String, UtilizadorAutenticado> {
      * @return true se o utilizador existe
      * @throws NullPointerException
      */
-    @Override
+
     public boolean containsKey(Object email) {
         boolean r;
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
@@ -86,7 +87,7 @@ public class UtilizadorDAO implements Map<String, UtilizadorAutenticado> {
      * @return true caso o Utilizador exista, false caso contrario
      * @throws NullPointerException
      **/
-    @Override
+
     public boolean containsValue(Object value) {
         UtilizadorAutenticado a = (UtilizadorAutenticado) value;
         UtilizadorAutenticado g = this.get(a.getEmail());
@@ -104,17 +105,23 @@ public class UtilizadorDAO implements Map<String, UtilizadorAutenticado> {
      * @return o Utilizador caso exista (null noutro caso)
      * @throws NullPointerException
      **/
-    @Override
+
     public UtilizadorAutenticado get(Object email) {
         UtilizadorAutenticado a = null;
-        Aposta ap = null;
+        Carteira c = null;
         ArrayList<Aposta> apostas = new ArrayList<>();
-        Carteira c = new Carteira();
-        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
+        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD)){
              Statement stm = conn.createStatement();
-             ResultSet rs = stm.executeQuery("SELECT * FROM Utilizador WHERE email='" + email + "'")) {
+             ResultSet rs = stm.executeQuery("SELECT * FROM Utilizador WHERE email='" + email + "'");
+             ResultSet rsA = stm.executeQuery("SELECT id FROM Aposta WHERE idUtilizador='" + email + "'");
+             ResultSet rsC = stm.executeQuery("SELECT * FROM Carteira WHERE user='" + email + "'");
+             while(rsA.next()){
+                 Aposta ap = ApostaDAO.getInstance().get(rsA.getInt(1));
+                 apostas.add(ap);
+             }
+             if(rsC.next()) c = new Carteira(rsC.getFloat("eur"),rsC.getFloat("usd"),rsC.getFloat("gbp"),rsC.getFloat("ada"));
              if (rs.next()) {  // A chave existe na tabela
-                 a = new UtilizadorAutenticado(rs.getString("username"), rs.getString("email"),  rs.getString("password"),c,apostas);
+                 a = new UtilizadorAutenticado(true, rs.getString("username"), rs.getString("email"),  rs.getString("password"),c,apostas);
             }
         } catch (SQLException e) {
             // Database error!
@@ -126,107 +133,42 @@ public class UtilizadorDAO implements Map<String, UtilizadorAutenticado> {
 
 
 
-    @Override
-    public Desporto put(String idD, Desporto d) {
-        Desporto res = null;
-        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
-             Statement stm = conn.createStatement()) {
-
-            // Actualizar a Desporto
-            stm.executeUpdate(
-                    "INSERT INTO Desporto VALUES ('" + d.getId() + "', '" + d.getNome() + "' ) ");
-        } catch (SQLException e) {
-            // Database error!
-            e.printStackTrace();
-            throw new NullPointerException(e.getMessage());
-        }
-        return res;
-    }
-
-
-    /**
-     * Remover um Desporto, dado o seu id
-     *
-     * @param code id do Desporto a remover
-     * @return Desporto removido
-     * @throws NullPointerException
-     *
-    @Override
-    public Desporto remove(Object code) {
-        Desporto t = this.get(code);
-        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
-             Statement stm = conn.createStatement()) {
-            stm.executeUpdate("DELETE FROM Desporto WHERE id='" + code + "'");
-        } catch (Exception e) {
-            // Database error!
-            e.printStackTrace();
-            throw new NullPointerException(e.getMessage());
-        }
-        return t;
-    }
-
-    /**
-     * Adicionar um conjunto de Desportos à base de dados
-     *
-     * @param desportos a adicionar
-     * @throws NullPointerException
-     *
-    @Override
-    public void putAll(Map<? extends String,? extends Desporto> desportos) {
-        for(Desporto p : desportos.values()) {
-            this.put(Integer.toString(p.getId()), p);
-        }
-    }
-
-    /**
-     * Apagar todas os Desporto
-     *
-     * @throws NullPointerException
-     *
-    @Override
-    public void clear() {
-        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
-             Statement stm = conn.createStatement()) {
-            stm.executeUpdate("TRUNCATE Desporto");
-        } catch (SQLException e) {
-            // Database error!
-            e.printStackTrace();
-            throw new NullPointerException(e.getMessage());
-        }
-    }
 
     /**
      *
      * @return todos os codigos dos Desportos na BD
      *
-    @Override
+     **/
+
     public Set<String> keySet() {
-        Set<String> desportos = new HashSet<>();
+        Set<String> utilizadores = new HashSet<>();
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
              Statement stm = conn.createStatement();
-             ResultSet rs = stm.executeQuery("SELECT id FROM desporto")){
+             ResultSet rs = stm.executeQuery("SELECT email FROM Utilizador")){
             while (rs.next()) {
-                desportos.add(rs.getString("id"));
+                utilizadores.add(rs.getString("email"));
             }
         } catch (Exception e) {
             // Database error!
             e.printStackTrace();
             throw new NullPointerException(e.getMessage());
         }
-        return desportos;
+        return utilizadores;
     }
 
     /**
      * @return Todas os Desportos da base de dados
      *
-    @Override
-    public Collection<Desporto> values() {
-        Collection<Desporto> col = new HashSet<>();
+     *
+     **/
+
+    public Collection<UtilizadorAutenticado> values() {
+        Collection<UtilizadorAutenticado> col = new HashSet<>();
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
              Statement stm = conn.createStatement();
-             ResultSet rs = stm.executeQuery("SELECT id FROM Desporto")) {
+             ResultSet rs = stm.executeQuery("SELECT email FROM Utilizador")) {
             while (rs.next()) {   // Utilizamos o get para construir os desportos
-                col.add(this.get(rs.getString("id")));
+                col.add(this.get(rs.getString("email")));
             }
         } catch (Exception e) {
             // Database error!
@@ -236,26 +178,6 @@ public class UtilizadorDAO implements Map<String, UtilizadorAutenticado> {
         return col;
     }
 
-    @Override
-    public Set<Entry<String, Desporto>> entrySet() {
-        Set<Entry<String, Desporto>> setReturn = new HashSet<Map.Entry<String, Desporto>>();
-        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
-             Statement stm = conn.createStatement();
-             ResultSet rs = stm.executeQuery("SELECT id FROM Desporto")) {
-            while(rs.next()){
-                Map.Entry<String, Desporto> entry = new HashMap.SimpleEntry<String, Desporto>(rs.getString("id"), this.get(rs.getString("id")));
-                setReturn.add(entry);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new NullPointerException(e.getMessage());
-        }
-        return setReturn;
-    }
-
-
-
-**/
 }
 
 

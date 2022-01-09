@@ -1,15 +1,14 @@
 package Data;
 
 import java.util.ArrayList;
-import java.util.Date;
 
-import Model.Competicao;
 import Model.Jogo;
 import java.sql.*;
 import java.util.*;
+import java.util.Map.*;
 import java.util.stream.Collectors;
 
-public class JogoDAO implements Map<String, Jogo> {
+public class JogoDAO {
     private static JogoDAO singleton = null;
 
 
@@ -28,7 +27,7 @@ public class JogoDAO implements Map<String, Jogo> {
     /**
      * @return número de desportos na base de dados
      */
-    @Override
+
     public int size() {
         int i = 0;
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
@@ -51,7 +50,7 @@ public class JogoDAO implements Map<String, Jogo> {
      *
      * @return true se existirem 0 Jogos
      */
-    @Override
+
     public boolean isEmpty() {
         return this.size() == 0;
     }
@@ -63,7 +62,7 @@ public class JogoDAO implements Map<String, Jogo> {
      * @return true se o Jogo existe
      * @throws NullPointerException
      */
-    @Override
+
     public boolean containsKey(Object idJ) {
         boolean r;
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
@@ -86,7 +85,7 @@ public class JogoDAO implements Map<String, Jogo> {
      * @return true caso o Jogo exista, false caso contrario
      * @throws NullPointerException
      */
-    @Override
+
     public boolean containsValue(Object value) {
         Jogo a = (Jogo) value;
         Jogo g = this.get(a.getId());
@@ -104,10 +103,10 @@ public class JogoDAO implements Map<String, Jogo> {
      * @return o Jogo caso exista (null noutro caso)
      * @throws NullPointerException
      */
-    @Override
+
     public Jogo get(Object id) {
         Jogo a = null;
-        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD){
+        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD)){
              Statement stm = conn.createStatement();
              ResultSet rs = stm.executeQuery("SELECT * FROM Jogo WHERE id='" + id + "'");
              if (rs.next()) {  // A chave existe na tabela
@@ -127,16 +126,11 @@ public class JogoDAO implements Map<String, Jogo> {
     }
 
 
-
-
-
-
-
     /**
      *
      * @return todos os codigos dos Jogo na BD
      */
-    @Override
+
     public Set<String> keySet() {
         Set<String> jogos = new HashSet<>();
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
@@ -156,7 +150,7 @@ public class JogoDAO implements Map<String, Jogo> {
     /**
      * @return Todas os Jogos da base de dados
      */
-    @Override
+
     public Collection<Jogo> values() {
         Collection<Jogo> col = new HashSet<>();
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
@@ -173,7 +167,6 @@ public class JogoDAO implements Map<String, Jogo> {
         return col;
     }
 
-    @Override
     public Set<Entry<String, Jogo>> entrySet() {
         Set<Entry<String, Jogo>> setReturn = new HashSet<Map.Entry<String, Jogo>>();
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);

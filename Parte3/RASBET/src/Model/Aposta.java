@@ -1,29 +1,34 @@
 package Model;
 
 public abstract class Aposta {
+    private int id;
     private String estado;
     private Float valorApostado;
     private Float ganhosPossiveis;
 
 
     public Aposta(){
+        this.id=0;
         this.estado=new String();
         this.valorApostado=(float)0;
         this.ganhosPossiveis=(float)0;
     }
 
-    public Aposta(String e,Float va){
+    public Aposta(int id,String e,Float va){
+        this.id = id;
         this.estado = e;
         this.valorApostado = va;
        // this.ganhosPossiveis= calculaganhosPossiveis();
     }
     public Aposta(Aposta a){
+        this.id = a.getId();
         setEstado(a.getEstado());
         setValorApostado(a.getValorApostado());
         setGanhosPossiveis(a.getGanhosPossiveis());
     }
 
 
+    public int getId() { return id; }
 
     public String getEstado() {
         return estado;
