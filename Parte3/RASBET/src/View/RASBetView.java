@@ -84,8 +84,8 @@ public class RASBetView {
             System.out.println("Email:   ");
             email = scin.nextLine();
 
+            System.out.println("Email:   ");
             while(i==1) {
-                System.out.println("Email:   ");
                 email = scin.nextLine();
                 if(email.contains("@")) i =0;
             }

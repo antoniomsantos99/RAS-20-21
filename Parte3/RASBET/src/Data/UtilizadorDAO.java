@@ -132,13 +132,12 @@ public class UtilizadorDAO implements Map<String,UtilizadorAutenticado>{
 
 
     public UtilizadorAutenticado put(String email, UtilizadorAutenticado u) {
-        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
-             Statement stm = conn.createStatement()) {
-
-            stm.executeUpdate(
+        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD)){
+             Statement stm = conn.createStatement();
+             stm.executeUpdate(
                     "INSERT INTO Utilizador VALUES ('"+u.getUsername()+"', '"+u.getEmail()+ "','" +u.getPassword()+"','" +u.getCarteira()+"' ) " +
                             "ON DUPLICATE KEY UPDATE password=VALUES(password)");
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             // Database error!
             e.printStackTrace();
             throw new NullPointerException(e.getMessage());
