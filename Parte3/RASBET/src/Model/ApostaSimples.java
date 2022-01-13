@@ -8,8 +8,8 @@ public class ApostaSimples extends Aposta{
     public ApostaSimples(){
         super();
     }
-    public ApostaSimples(String e, Float vA,int op, Jogo j){
-        super(e,vA);
+    public ApostaSimples(int id,String e, Float vA,int op, Jogo j){
+        super(id,e,vA);
         this.opcao= op;
         this.jogo=j;
     }

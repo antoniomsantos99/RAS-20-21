@@ -7,11 +7,10 @@ import Model.UtilizadorAutenticado;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.*;
 
 
-public class UtilizadorDAO{
+public class UtilizadorDAO implements Map<String,UtilizadorAutenticado>{
     private static UtilizadorDAO singleton = null;
 
     
@@ -132,7 +131,51 @@ public class UtilizadorDAO{
     }
 
 
+    public UtilizadorAutenticado put(String email, UtilizadorAutenticado u) {
+        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
+             Statement stm = conn.createStatement()) {
 
+            stm.executeUpdate(
+                    "INSERT INTO Utilizador VALUES ('"+u.getUsername()+"', '"+u.getEmail()+ "','" +u.getPassword()+"','" +u.getCarteira()+"' ) " +
+                            "ON DUPLICATE KEY UPDATE password=VALUES(password)");
+        } catch (SQLException e) {
+            // Database error!
+            e.printStackTrace();
+            throw new NullPointerException(e.getMessage());
+        }
+        return u;
+    }
+
+    public UtilizadorAutenticado remove(Object code) {
+        UtilizadorAutenticado t = this.get(code);
+        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
+             Statement stm = conn.createStatement()) {
+            stm.executeUpdate("DELETE FROM Utilizador WHERE email='"+code+"'");
+        } catch (Exception e) {
+            // Database error!
+            e.printStackTrace();
+            throw new NullPointerException(e.getMessage());
+        }
+        return t;
+    }
+
+
+    public void putAll(Map<? extends String,? extends UtilizadorAutenticado> utilizadores) {
+        for(UtilizadorAutenticado u : utilizadores.values()) {
+            this.put(u.getEmail(),u);
+        }
+    }
+
+    public void clear() {
+        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
+             Statement stm = conn.createStatement()) {
+            stm.executeUpdate("TRUNCATE Utilizador");
+        } catch (SQLException e) {
+            // Database error!
+            e.printStackTrace();
+            throw new NullPointerException(e.getMessage());
+        }
+    }
 
     /**
      *
@@ -177,7 +220,21 @@ public class UtilizadorDAO{
         }
         return col;
     }
-
+    public Set<Entry<String, UtilizadorAutenticado>> entrySet() {
+        Set<Entry<String, UtilizadorAutenticado>> setReturn = new HashSet<Map.Entry<String, UtilizadorAutenticado>>();
+        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
+             Statement stm = conn.createStatement();
+             ResultSet rs = stm.executeQuery("SELECT codQR FROM paletes")) {
+            while(rs.next()){
+                Map.Entry<String, UtilizadorAutenticado> entry = new HashMap.SimpleEntry<String, UtilizadorAutenticado>(rs.getString("email"), this.get(rs.getString("email")));
+                setReturn.add(entry);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new NullPointerException(e.getMessage());
+        }
+        return setReturn;
+    }
 }
 
 

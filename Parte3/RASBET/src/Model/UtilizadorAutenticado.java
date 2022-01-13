@@ -57,7 +57,7 @@ public class UtilizadorAutenticado extends Utilizador {
         return data_nascimento;
     }
 
-
+    public Carteira getCarteira() { return carteira; }
 
     public ArrayList<Aposta> getHistorico() {
         ArrayList<Aposta> ap= new ArrayList<>();

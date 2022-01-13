@@ -12,8 +12,8 @@ public class ApostaMultipla extends Aposta{
         this.opcoes= new ArrayList<>();
         this.jogos= new ArrayList<>();
     }
-    public ApostaMultipla(String e, Float vA,ArrayList<Jogo> jgs, ArrayList<Integer> op){
-        super(e,vA);
+    public ApostaMultipla(int id,String e, Float vA,ArrayList<Jogo> jgs, ArrayList<Integer> op){
+        super(id,e,vA);
         setJogos(jgs);
         setOp(op);
     }

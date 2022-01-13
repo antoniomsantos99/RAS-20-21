@@ -112,8 +112,8 @@ public class ApostaDAO {
             }
              ResultSet rs = stm.executeQuery("SELECT * FROM Aposta WHERE id='" + id + "' ");
             if (rs.next()) {  // A chave existe na tabela
-                if (i.size() == 1) a = new ApostaSimples(rs.getString("estado"),rs.getFloat("valorApostado"),j.get(0),JogoDAO.getInstance().get(i.get(0)));
-            else a = new ApostaMultipla(rs.getString("estado"),rs.getFloat("valorApostado"),JogoDAO.getInstance().getJogos(i),j);
+                if (i.size() == 1) a = new ApostaSimples(rs.getInt("id"),rs.getString("estado"),rs.getFloat("valorApostado"),j.get(0),JogoDAO.getInstance().get(i.get(0)));
+            else a = new ApostaMultipla(rs.getInt("id"),rs.getString("estado"),rs.getFloat("valorApostado"),JogoDAO.getInstance().getJogos(i),j);
             }
         } catch (SQLException e) {
             // Database error!
