@@ -25,8 +25,6 @@ public class Menu {
             boolean validate();
         }
 
-
-
         // Varíavel de classe para suportar leitura
         private static Scanner is = new Scanner(System.in);
 
@@ -52,7 +50,12 @@ public class Menu {
             this.op = 0;
         }
 
-        public Menu(){}
+        public Menu(){
+            this.opcoes = new ArrayList<>();
+            this.disponivel = new ArrayList<>();
+            this.handlers = new ArrayList<>();
+            this.op = 0;
+        }
 
         /**
          * Método para apresentar o menu e ler uma opção.

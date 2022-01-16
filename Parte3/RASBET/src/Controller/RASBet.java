@@ -9,7 +9,6 @@ import Model.Aposta;
 import Model.Carteira;
 import Model.UtilizadorAutenticado;
 import View.Menu;
-import View.RASBetView;
 
 import java.text.DateFormat;
 import java.text.ParseException;
