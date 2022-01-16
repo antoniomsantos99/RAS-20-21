@@ -2,13 +2,13 @@ package Model;
 
 public class Moeda {
     private String nome;
-    private double exchange;
+    private double exchangeComEuro;
 
     public Moeda() {}
 
     public Moeda(String nome, double exchange) {
         this.nome = nome;
-        this.exchange = exchange;
+        this.exchangeComEuro = exchange;
     }
 
     public String getNome() {
@@ -20,10 +20,10 @@ public class Moeda {
     }
 
     public double getExchange() {
-        return exchange;
+        return exchangeComEuro;
     }
 
     public void setExchange(double e) {
-        exchange = e;
+        exchangeComEuro = e;
     }
 }

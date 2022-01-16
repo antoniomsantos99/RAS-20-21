@@ -69,7 +69,7 @@ public class UtilizadorDAO implements Map<String,UtilizadorAutenticado>{
         boolean r;
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
              Statement stm = conn.createStatement();
-             ResultSet rs = stm.executeQuery("SELECT id FROM Utilizador WHERE email='" + email.toString() + "'")) {
+             ResultSet rs = stm.executeQuery("SELECT email FROM Utilizador WHERE email='" + email.toString() + "'")) {
              r = rs.next();
         } catch (SQLException e) {
             // Database error!
@@ -118,7 +118,7 @@ public class UtilizadorDAO implements Map<String,UtilizadorAutenticado>{
                  Aposta ap = ApostaDAO.getInstance().get(rsA.getInt(1));
                  apostas.add(ap);
              }
-             if(rsC.next()) c = new Carteira(rsC.getFloat("eur"),rsC.getFloat("usd"),rsC.getFloat("gbp"),rsC.getFloat("ada"));
+             //if(rsC.next()) c = new Carteira(rsC.getFloat("eur"),rsC.getFloat("usd"),rsC.getFloat("gbp"),rsC.getFloat("ada"));
              if (rs.next()) {  // A chave existe na tabela
                  a = new UtilizadorAutenticado(true, rs.getString("username"), rs.getString("email"),  rs.getString("password"),c,apostas);
             }

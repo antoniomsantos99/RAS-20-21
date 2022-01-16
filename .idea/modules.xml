@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/RAS-20-21.iml" filepath="$PROJECT_DIR$/.idea/RAS-20-21.iml" />
       <module fileurl="file://$PROJECT_DIR$/Parte3/RASBET/RASBET.iml" filepath="$PROJECT_DIR$/Parte3/RASBET/RASBET.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Parte3/RASBET/src/RASBET1.iml" filepath="$PROJECT_DIR$/Parte3/RASBET/src/RASBET1.iml" />
     </modules>
   </component>
 </project>

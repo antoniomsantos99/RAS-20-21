@@ -12,6 +12,7 @@ public class Competicao {
         this.id = 0;
         this.desporto = new Desporto();
     }
+
     public Competicao(String n, int id, Desporto desporto){
         this.nome=n;
         this.id=id;
