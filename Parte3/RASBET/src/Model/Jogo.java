@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Jogo {
     private int id;
+    private String competicao;
     private String participante1;
     private String participante2;
     private float odd1;
@@ -14,22 +15,26 @@ public class Jogo {
     private String resultado;
     private Date data;
     private String localizacao;
+    private String estado;
 
 
     public Jogo(){
         this.id=0;
-        this.participante1 = new String();
-        this.participante2 = new String();
+        this.competicao = "";
+        this.participante1 = "";
+        this.participante2 = "";
         this.odd1= 0f;
         this.odd2= 0f;
         this.odd3= 0f;
-        this.resultado = new String();
+        this.resultado = "";
         this.data= new Date();
-        this.localizacao = new String();
+        this.localizacao = "";
+        this.estado = "";
     }
 
-    public Jogo(int id, String p1, String p2,float o1,float o2,float o3, String r, Date dt, String l){
+    public Jogo(int id,String c, String p1, String p2,float o1,float o2,float o3, String r, Date dt, String l,String e){
         this.id=id;
+        this.competicao=c;
         this.participante1 = p1;
         this.participante2 = p2;
         this.odd1=o1;
@@ -38,7 +43,7 @@ public class Jogo {
         this.resultado = r;
         this.data= dt;
         this.localizacao = l;
-        
+        this.estado = e;
     }
     public Jogo(Jogo j){
         this.id=j.getId();

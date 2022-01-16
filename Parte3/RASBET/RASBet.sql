@@ -1,3 +1,8 @@
+-- drop schema rasbet
+
+create schema rasbet;
+use rasbet;
+
 CREATE TABLE `Utilizador` (
   `email` varchar(255) PRIMARY KEY,
   `username` varchar(255),
@@ -41,7 +46,7 @@ CREATE TABLE `Competicao` (
   `nome` varchar(255)
 );
 
-CREATE TABLE `CarteiraMoeda` (
+CREATE TABLE `Carteira` (
   `user` varchar(255) PRIMARY KEY,
   `moeda` varchar(255),
   `valor` double
@@ -64,6 +69,6 @@ ALTER TABLE `Jogo` ADD FOREIGN KEY (`Participante1`) REFERENCES `Participante` (
 
 ALTER TABLE `Jogo` ADD FOREIGN KEY (`Participante2`) REFERENCES `Participante` (`nome`);
 
-ALTER TABLE `CarteiraMoeda` ADD FOREIGN KEY (`user`) REFERENCES `Utilizador` (`email`);
+ALTER TABLE `Carteira` ADD FOREIGN KEY (`user`) REFERENCES `Utilizador` (`email`);
 
-ALTER TABLE `CarteiraMoeda` ADD FOREIGN KEY (`moeda`) REFERENCES `moeda` (`nome`);
+ALTER TABLE `Carteira` ADD FOREIGN KEY (`moeda`) REFERENCES `moeda` (`nome`);

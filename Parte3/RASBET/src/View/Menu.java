@@ -52,6 +52,8 @@ public class Menu {
             this.op = 0;
         }
 
+        public Menu(){}
+
         /**
          * Método para apresentar o menu e ler uma opção.
          */

@@ -93,7 +93,6 @@ public class UtilizadorAutenticado extends Utilizador {
             this.historico.add(a);
     }
 
-
     @Override
     public String toString() {
         return "UtilizadorAutenticado{" +

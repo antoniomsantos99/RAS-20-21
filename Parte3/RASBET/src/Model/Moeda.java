@@ -4,7 +4,10 @@ public class Moeda {
     private String nome;
     private double exchangeComEuro;
 
-    public Moeda() {}
+    public Moeda() {
+        this.nome = "Euro";
+        this.exchangeComEuro = 0.0;
+    }
 
     public Moeda(String nome, double exchange) {
         this.nome = nome;

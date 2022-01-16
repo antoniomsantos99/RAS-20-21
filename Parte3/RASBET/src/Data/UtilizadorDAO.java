@@ -134,8 +134,9 @@ public class UtilizadorDAO implements Map<String,UtilizadorAutenticado>{
     public UtilizadorAutenticado put(String email, UtilizadorAutenticado u) {
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD)){
              Statement stm = conn.createStatement();
+             Carteira c = new Carteira();
              stm.executeUpdate(
-                    "INSERT INTO Utilizador VALUES ('"+u.getUsername()+"', '"+u.getEmail()+ "','" +u.getPassword()+"','" +u.getCarteira()+"' ) " +
+                    "INSERT INTO Utilizador VALUES ('" + u.getUsername() + "', '" + u.getEmail() + "','" + u.getPassword() + "','" + c +"' ) " +
                             "ON DUPLICATE KEY UPDATE password=VALUES(password)");
         }catch (SQLException e) {
             // Database error!

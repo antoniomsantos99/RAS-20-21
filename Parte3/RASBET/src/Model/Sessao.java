@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sessao {
@@ -8,7 +9,12 @@ public class Sessao {
     private Idioma idioma;
     private Moeda moeda;
 
-    public Sessao() {}
+    public Sessao() {
+        this.utilizador = new UtilizadorNAutenticado();
+        this.apostas_atuais = new ArrayList<>();
+        this.idioma = new Idioma();
+        this.moeda = new Moeda();
+    }
 
     public Utilizador getUtilizador() {
         return utilizador;
