@@ -57,12 +57,13 @@ public class Menu {
             this.op = 0;
         }
 
+
         /**
          * Método para apresentar o menu e ler uma opção.
          */
-        public void executa(int k) {
+        public void run() {
             do {
-                showMenu(k);
+                showMenu();
                 this.op = lerOpcao();
                 if (op>0 && !this.disponivel.get(op-1).validate()) {
                     System.out.println("Opção indisponível! Tente novamente.");
@@ -75,25 +76,32 @@ public class Menu {
 
 
         /** Apresentar o menu */
-        private void showMenu(int k) {
-            for (int i=0; i<this.opcoes.size(); i++) {
+        private void showMenu() {
+            System.out.println("\n########### Menu ###########");
+
+            for (int i = 0; i<this.opcoes.size(); i++) {
                 System.out.print(i+1);
                 System.out.print(" - ");
-                System.out.println(this.opcoes.get(i));
+                System.out.println(this.disponivel.get(i).validate() ? this.opcoes.get(i) : "----------");
             }
-            System.out.println("0 - Sair.");
+            System.out.println("0 - Sair");
         }
 
         /** Ler uma opção válida */
         private int lerOpcao() {
             int op;
-            //Scanner is = new Scanner(System.in);
-
             System.out.print("Opção: ");
-            op = is.nextInt();
-            while ( op < 0 || op > this.opcoes.size()) {
-                System.out.println("Opção Inválida!!!");
-                op = lerOpcao();
+            try {
+                String linha = is.nextLine();
+                op = Integer.parseInt(linha);
+
+            } catch (NumberFormatException e) {
+                op = -1;
+            }
+
+            if (op < 0 || op > this.opcoes.size()) {
+                System.out.println("Opção invalida!!");
+                op = -1;
             }
             return op;
         }
