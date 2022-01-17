@@ -1,5 +1,7 @@
 package View;
 
+import Languages.gestorIdiomas;
+
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -32,13 +34,15 @@ public class Menu {
         private List<String> opcoes;
         private List<MenuPreCondition> disponivel;  // Lista de pré-condições
         private List<MenuHandler> handlers;         // Lista de handlers
+        private gestorIdiomas gestIdiomas;
 
         private int op;
 
         /**
          * Constructor for objects of class Menu
          */
-        public Menu(String[] opcoes) {
+        public Menu(String[] opcoes,gestorIdiomas gest) {
+            this.gestIdiomas = gest;
             this.opcoes = Arrays.asList(opcoes);
             this.disponivel = new ArrayList<>();
             this.handlers = new ArrayList<>();
@@ -66,7 +70,7 @@ public class Menu {
                 showMenu();
                 this.op = lerOpcao();
                 if (op>0 && !this.disponivel.get(op-1).validate()) {
-                    System.out.println("Opção indisponível! Tente novamente.");
+                    System.out.println(gestIdiomas.getTexto("optionNotFound"));
                 } else if (op>0) {
                     // executar handler
                     this.handlers.get(op-1).execute();
@@ -84,13 +88,13 @@ public class Menu {
                 System.out.print(" - ");
                 System.out.println(this.disponivel.get(i).validate() ? this.opcoes.get(i) : "----------");
             }
-            System.out.println("0 - Sair");
+            System.out.println(gestIdiomas.getTexto("leave"));
         }
 
         /** Ler uma opção válida */
         private int lerOpcao() {
             int op;
-            System.out.print("Opção: ");
+            System.out.print(gestIdiomas.getTexto("option"));
             try {
                 String linha = is.nextLine();
                 op = Integer.parseInt(linha);
@@ -100,7 +104,7 @@ public class Menu {
             }
 
             if (op < 0 || op > this.opcoes.size()) {
-                System.out.println("Opção invalida!!");
+                System.out.println(gestIdiomas.getTexto("invalidOption"));
                 op = -1;
             }
             return op;

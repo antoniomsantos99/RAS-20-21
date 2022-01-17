@@ -3,8 +3,10 @@ package View;
 import Controller.RASBet;
 import Exceptions.PasswordIncorreta;
 import Exceptions.UtilizadorExistente;
+import Languages.gestorIdiomas;
 import View.Menu;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,25 +18,26 @@ import java.util.Scanner;
 public class TextUi {
     private final Scanner scin;
     private final RASBet rasbet;
+    private final gestorIdiomas gestIdiomas;
 
-    public TextUi() {
-
+    public TextUi() throws IOException {
+        this.gestIdiomas = new gestorIdiomas();
         this.scin = new Scanner(System.in);
         rasbet = new RASBet();
     }
 
     public void run() {
-        rasbet.comecarSessao();
-        System.out.println("Bem vindo ao Gestor de Armazém!");
+        //rasbet.comecarSessao();
+        System.out.println(gestIdiomas.getTexto("welcome"));
         this.menuPrincipal();
-        System.out.println("A sair...");
+        System.out.println(gestIdiomas.getTexto("goodbye"));
     }
 
     private void menuPrincipal() {
         Menu menu = new Menu(new String[] {
-                "Menu de Login.",
-                "Menu de Registo."
-        });
+                gestIdiomas.getTexto("loginmenu"),
+                gestIdiomas.getTexto("signmenu")
+        },gestIdiomas);
 
         menu.setHandler(1, this::menuLogin);
         menu.setHandler(2, this::menuRegisto);
@@ -45,9 +48,9 @@ public class TextUi {
 
     private void menuLogin(){
         Menu menu = new Menu(new String[]{
-                "Utilizador Autenticado",
-                "Utilizador Nao Autenticado."
-        });
+                gestIdiomas.getTexto("userauth"),
+                gestIdiomas.getTexto("usernoauth")
+        },gestIdiomas);
 
 
         menu.setHandler(1, this::tratarLogin);
@@ -58,9 +61,9 @@ public class TextUi {
 
     private void menuRegisto(){
         Menu menu = new Menu(new String[]{
-                "Utilizador Autenticado",
-                "Utilizador Nao Autenticado."
-        });
+                gestIdiomas.getTexto("userauth"),
+                gestIdiomas.getTexto("usernoauth")
+        },gestIdiomas);
 
         menu.setHandler(1, this::tratarLogin);
         menu.setHandler(2, this::tratarRegisto);
@@ -84,19 +87,23 @@ public class TextUi {
 
         System.out.println("Password:   ");
         password = scin.nextLine();
-
+        /*
         try {
         //here it sends to controller
-            rasbet.login(email,password);
+            //rasbet.login(email,password);
 
         } catch(NullPointerException | PasswordIncorreta e){
             if (e instanceof PasswordIncorreta)
-                System.out.println(("Password incorreta."));
+                System.out.println(gestIdiomas.getTexto("badPass"));
 
             else System.out.println(e.getMessage());
         }
-        System.out.println("'Login com sucesso '");
+        System.out.println(gestIdiomas.getTexto("goodlogin"));
+    */
     }
+
+
+
 
     private void tratarRegisto(){
         try{
@@ -125,12 +132,12 @@ public class TextUi {
             DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
             Date date = format.parse(dataN);
 
-            rasbet.registarUtilizador(username,email,password);
-            System.out.println("Utilizador com email '" + email + "' registado no sistema.");
+            //rasbet.registarUtilizador(username,email,password);
+            System.out.println(String.format(gestIdiomas.getTexto("signSuccess"),email));
 
         } catch(NullPointerException | UtilizadorExistente | ParseException e){
             if (e instanceof UtilizadorExistente)
-                System.out.println(("Utilizador já existe no sistema. Insira outro email."));
+                System.out.println(gestIdiomas.getTexto("userExists"));
 
             else System.out.println(e.getMessage());
         }
