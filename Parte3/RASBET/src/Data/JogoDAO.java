@@ -2,6 +2,7 @@ package Data;
 
 import java.util.ArrayList;
 
+import Model.Competicao;
 import Model.Jogo;
 import java.sql.*;
 import java.util.*;
@@ -142,6 +143,22 @@ public class JogoDAO {
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM Jogo");
             if (rs.next()) {  // A chave existe na tabela
+                a.add(new Jogo(rs.getString("id"),rs.getString("Competicao"),rs.getString("participante1"),rs.getString("participante2"), rs.getFloat("Odd1") ,rs.getFloat("Odd2")  ,rs.getFloat("Odd3")  ,rs.getString("resultado"),rs.getTimestamp("data") ,rs.getString("localizacao"),rs.getString("estado")));
+            }
+        } catch(SQLException e) {
+            // Database error!
+            e.printStackTrace();
+            throw new NullPointerException(e.getMessage());
+        }
+        return a;
+    }
+
+    public ArrayList<Jogo> getJogosComp(String id) {
+        ArrayList<Jogo> a = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD)){
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(String.format("SELECT * FROM Jogos where Competicao = %s",id));
+            while (rs.next()) {  // A chave existe na tabela
                 a.add(new Jogo(rs.getString("id"),rs.getString("Competicao"),rs.getString("participante1"),rs.getString("participante2"), rs.getFloat("Odd1") ,rs.getFloat("Odd2")  ,rs.getFloat("Odd3")  ,rs.getString("resultado"),rs.getTimestamp("data") ,rs.getString("localizacao"),rs.getString("estado")));
             }
         } catch(SQLException e) {
