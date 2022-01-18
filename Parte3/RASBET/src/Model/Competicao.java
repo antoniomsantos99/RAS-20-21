@@ -1,14 +1,12 @@
 package Model;
 
-import java.util.ArrayList;
-
 public class Competicao {
     private String nome;
     private int id;
     private Desporto desporto;
 
     public Competicao(){
-        this.nome=new String();
+        this.nome= "";
         this.id = 0;
         this.desporto = new Desporto();
     }
@@ -52,5 +50,13 @@ public class Competicao {
 
     protected Competicao clone() {
         return new Competicao(this);
+    }
+
+    @Override
+    public String toString() {
+        return "Competicao{" +
+                "nome='" + nome + '\'' +
+                ", id='" + id + '\'' +
+                '}';
     }
 }

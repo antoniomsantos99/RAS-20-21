@@ -44,18 +44,20 @@ public class RASBet {
         this.utilizadores.put(email,u);
     }
 
-    public List<Aposta> visualizarHistorico(String email){
+    public List<Aposta> getHistorico(String email){
         UtilizadorAutenticado u = UtilizadorDAO.getInstance().get(email);
         return u.getHistorico();
     }
 
     //FAZER METODOS DE EDITAR PERFIL, LEVANTAR/DEPOSITAR E ALTERACAO SALDO
 
-
-
-    public List<Jogo> getJogos(){
-        return JogoDAO.getInstance().getJogos();
+    /*public List<Competicao> getCompeticoes(char desporto){
+        return CompeticaoDAO.getInstance().getCompFrom(desporto);
     }
+
+    public List<Jogo> getJogos(String competicao){
+        return JogoDAO.getInstance().getJogos(competicao);
+    }*/
 
     public List<Jogo> getJogosWithOdds(){
         return JogoDAO.getInstance().getJogosWithOdds();

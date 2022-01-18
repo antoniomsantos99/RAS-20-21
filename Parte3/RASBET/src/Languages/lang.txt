@@ -1,7 +1,7 @@
 -pt
 welcome Bem Vindx ao RASBet!
-loginmenu Menu de Login.
-signmenu Menu de Registo.
+loginmenu Menu de Login
+signmenu Menu de Registo
 userauth Utilizador Autenticado.
 usernoauth Utilizador Não Autenticado.
 goodlogin Login Com Sucesso
@@ -14,13 +14,21 @@ leave 0 - Sair
 optionNotFound Opção indisponível! Tente novamente.
 option Opção:
 invalidOption Opção inválida!
-gameslist Jogos
+games Jogos
+sports Desportos
+competitions Competições
 bet Apostar
+gameslist Jogos disponíveis
+sportslist Desportos disponíveis
+soccer Futebol
+tennis Ténis
+tongues Mudar idioma
+newtongue Mudar idioma para
 
 -en
 welcome Welcome to RASBet!
-loginmenu Login Menu.
-signmenu Sign Up Menu.
+loginmenu Login Menu
+signmenu Sign Up Menu
 userauth Signed User.
 usernoauth Guest.
 goodlogin Login Successful
@@ -33,5 +41,13 @@ leave 0 - Leave
 optionNotFound Option not available! Try again
 option Option:
 invalidOption Invalid option!
-gameslist Games
+games Games
+sports Sports
+competitions Competitions
 bet Bet
+gameslist Available games
+sportslist Available sports
+soccer Soccer
+tennis Tennis
+tongues Change language
+newtongue Change language to

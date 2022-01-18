@@ -1,0 +1,53 @@
+-pt
+welcome Bem Vindx ao RASBet!
+loginmenu Menu de Login
+signmenu Menu de Registo
+userauth Utilizador Autenticado.
+usernoauth Utilizador Não Autenticado.
+goodlogin Login Com Sucesso
+badPass Password Incorreta
+birthday Data Nascimento (yyyy/mm/dd):
+signSuccess Utilizador com email %s registado no sistema.
+userExists Utilizador já existe no sistema. Insira outro email.
+goodbye A sair...
+leave 0 - Sair
+optionNotFound Opção indisponível! Tente novamente.
+option Opção:
+invalidOption Opção inválida!
+games Jogos
+sports Desportos
+competitions Competições
+bet Apostar
+gameslist Jogos disponíveis
+sportslist Desportos disponíveis
+soccer Futebol
+tennis Ténis
+tongues Mudar idioma
+newtongue Mudar idioma para
+
+-en
+welcome Welcome to RASBet!
+loginmenu Login Menu
+signmenu Sign Up Menu
+userauth Signed User.
+usernoauth Guest.
+goodlogin Login Successful
+badPass Incorrect Password
+birthday Date of Birth (yyyy/mm/dd):
+signSuccess User with email %s successfuly created.
+userExists User already exists. Please try another email.
+goodbye Goodbye!
+leave 0 - Leave
+optionNotFound Option not available! Try again
+option Option:
+invalidOption Invalid option!
+games Games
+sports Sports
+competitions Competitions
+bet Bet
+gameslist Available games
+sportslist Available sports
+soccer Soccer
+tennis Tennis
+tongues Change language
+newtongue Change language to
