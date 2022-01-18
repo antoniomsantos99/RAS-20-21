@@ -121,8 +121,14 @@ public class JogoDAO {
     }
 
 
-    public ArrayList<Jogo> getJogos(ArrayList<Integer> ids){
+    public ArrayList<Jogo> getJogos(ArrayList<String> ids){
         return ids.stream().map(e->get(e)).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public ArrayList<Jogo> getJogos(){
+        Set<String> set = keySet();
+        ArrayList<String> lista_ids = new ArrayList<>(set);
+        return getJogos(lista_ids);
     }
 
 

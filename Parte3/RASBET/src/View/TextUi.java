@@ -4,30 +4,28 @@ import Controller.RASBet;
 import Exceptions.PasswordIncorreta;
 import Exceptions.UtilizadorExistente;
 import Languages.gestorIdiomas;
-import View.Menu;
 
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class TextUi {
     private final Scanner scin;
     private final RASBet rasbet;
     private final gestorIdiomas gestIdiomas;
+    private final String id_user_atual;
 
     public TextUi() throws IOException {
         this.gestIdiomas = new gestorIdiomas();
         this.scin = new Scanner(System.in);
         rasbet = new RASBet();
+        id_user_atual = null;
     }
 
     public void run() {
-        //rasbet.comecarSessao();
         System.out.println(gestIdiomas.getTexto("welcome"));
         this.menuPrincipal();
         System.out.println(gestIdiomas.getTexto("goodbye"));
@@ -35,15 +33,26 @@ public class TextUi {
 
     private void menuPrincipal() {
         Menu menu = new Menu(new String[] {
+                gestIdiomas.getTexto("gameslist"),
+                gestIdiomas.getTexto("bet"),
                 gestIdiomas.getTexto("loginmenu"),
                 gestIdiomas.getTexto("signmenu")
         },gestIdiomas);
 
-        menu.setHandler(1, this::menuLogin);
-        menu.setHandler(2, this::menuRegisto);
+        menu.setHandler(1, this::menuJogos);
+        menu.setHandler(2, this::menuAposta);
+        menu.setHandler(3, this::menuLogin);
+        menu.setHandler(4, this::menuRegisto);
 
 
         menu.run();
+    }
+
+    private void menuJogos(){
+        System.out.println("Jogos disponíveis para apostar:");
+        rasbet.getJogos();
+
+        
     }
 
     private void menuLogin(){
