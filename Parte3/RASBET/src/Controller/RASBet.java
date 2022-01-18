@@ -157,6 +157,7 @@ public class RASBet {
 
     public void mudarUsername(String email, String username){
         user.setUsername(username);
+        UtilizadorDAO.getInstance().putUsername(email,user);
     }
 
     public String getCarteira(){

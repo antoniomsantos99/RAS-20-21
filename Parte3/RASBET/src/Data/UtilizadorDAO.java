@@ -147,6 +147,20 @@ public class UtilizadorDAO implements Map<String,UtilizadorAutenticado>{
         return u;
     }
 
+    public UtilizadorAutenticado putUsername(String email, UtilizadorAutenticado u) {
+        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD)){
+            Statement stm = conn.createStatement();
+            stm.executeUpdate(
+                    "INSERT INTO Utilizador VALUES ('" + u.getEmail() + "', '" + u.getUsername() + "','" + u.getPassword()  +
+                            "') ON DUPLICATE KEY UPDATE username=VALUES(username)");
+        }catch (SQLException e) {
+            // Database error!
+            e.printStackTrace();
+            throw new NullPointerException(e.getMessage());
+        }
+        return u;
+    }
+
     public UtilizadorAutenticado remove(Object code) {
         UtilizadorAutenticado t = this.get(code);
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
