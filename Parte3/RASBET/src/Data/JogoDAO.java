@@ -26,7 +26,7 @@ public class JogoDAO {
     }
 
     /**
-     * @return número de desportos na base de dados
+     * @return número de jogos na base de dados
      */
 
     public int size() {
@@ -194,6 +194,22 @@ public class JogoDAO {
         Set<String> set = keySet();
         ArrayList<String> lista_ids = new ArrayList<>(set);
         return getJogos(lista_ids);
+    }
+
+    public float getOdd(String id, int escolha){
+        float res = 0;
+        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD)){
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(String.format("SELECT Odd%d FROM rasbet.jogo WHERE id = '%s';",escolha,id));
+            if (rs.next()) {  // A chave existe na tabela
+                res = rs.getFloat(String.format("Odd%d",escolha));
+            }
+        } catch(SQLException e) {
+            // Database error!
+            e.printStackTrace();
+            throw new NullPointerException(e.getMessage());
+        }
+        return res;
     }
 
 

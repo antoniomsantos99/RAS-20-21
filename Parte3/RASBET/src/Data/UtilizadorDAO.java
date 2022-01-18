@@ -55,7 +55,7 @@ public class UtilizadorDAO implements Map<String,UtilizadorAutenticado>{
 
     
     /**
-     * Método que verifica se um id de um desporto existe na base de dados
+     * Método que verifica se um id de um utilizador existe na base de dados
      *
      * @param email utilizador
      * @return true se o utilizador existe

@@ -17,7 +17,7 @@ public class TextUi {
     private final Scanner scin;
     private final RASBet rasbet;
     private final gestorIdiomas gestIdiomas;
-    private final String id_user_atual;
+    private String id_user_atual;
 
     public TextUi() throws IOException {
         this.gestIdiomas = new gestorIdiomas();
@@ -83,13 +83,13 @@ public class TextUi {
         System.out.println(gestIdiomas.getTexto("gameslist"));
         System.out.println(rasbet.getJogosWithOddsFromComp(i).toString());
 
-        Menu menu = new Menu(new String[]{
-                "bet"
-        },gestIdiomas);
+        System.out.println(gestIdiomas.getTexto("wannaBet"));
 
-        menu.setHandler(1, this::tratarAposta);
+        String resp = scin.next();
 
-        menu.run();
+        if(Objects.equals(resp, "Y")) tratarAposta(i);
+
+
     }
 
 
@@ -102,9 +102,9 @@ public class TextUi {
                 "bet"
         },gestIdiomas);
 
-        menu.setHandler(1, this::tratarAposta);
+        //menu.setHandler(1, this::tratarAposta());
 
-        menu.run();
+       // menu.run();
     }
 
 
@@ -132,8 +132,65 @@ public class TextUi {
         gestIdiomas.setIdioma(scin.nextLine());
     }
 
+    private void tratarAposta(String id_jogo){
+        float odd=0;
+        if(id_user_atual == null){
+           Menu menu = new Menu(new String[]{
+                           "loginmenu",
+                           "signmenu"
+                   },gestIdiomas);
 
-    private void tratarAposta(){
+        menu.setHandler(1, this::tratarLogin);
+        menu.setHandler(2, this::tratarRegisto);
+
+        menu.run();
+        }
+
+        else{
+            Map<String,Float> ids = new HashMap<>();
+            int done=0;
+            while(done==0) {
+                System.out.println(gestIdiomas.getTexto("choose"));
+                String resp = scin.next();
+                System.out.println(gestIdiomas.getTexto("choice"));
+                String respo = scin.next();
+
+                if (Objects.equals(resp, "-1")) done = 1;
+                else {
+                    if(respo.equals("Home")) odd = rasbet.getOddJogo(resp,1);
+                    if(respo.equals("Tie")) odd= rasbet.getOddJogo(resp,2);
+                    if(respo.equals("Away")) odd = rasbet.getOddJogo(resp,3);
+                    ids.put(resp,odd);
+                }
+            }
+
+            if(ids.size()==1){
+
+                System.out.println(gestIdiomas.getTexto("howMuch"));
+                float valor = scin.nextFloat();
+                odd = ids.get(0);
+                System.out.printf("odd- %f%n",odd);
+                System.out.println(gestIdiomas.getTexto("currency"));
+
+                //rasbet.fazerApostaSimples(ids.get(0),odd,valor);
+            }
+            else{
+                System.out.println(gestIdiomas.getTexto("howMuch"));
+                float valor = scin.nextFloat();
+                System.out.println(gestIdiomas.getTexto("currency"));
+                for(String jogo : ids.keySet()){
+                    //
+                }
+
+            }
+
+
+
+
+
+
+        }
+
 
     }
 
@@ -153,6 +210,7 @@ public class TextUi {
         try {
         //here it sends to controller
             rasbet.login(email,password);
+            this.id_user_atual=email;
 
         } catch(NullPointerException | PasswordIncorreta | UtilizadorNExistente e){
             if (e instanceof PasswordIncorreta)
