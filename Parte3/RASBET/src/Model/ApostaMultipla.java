@@ -18,6 +18,12 @@ public class ApostaMultipla extends Aposta{
         this.opcoes= op;
         this.jogos = jgs;
     }
+    public ApostaMultipla(int id,String e, Float vA,ArrayList<Jogo> jgs, ArrayList<Integer> op,Float odds){
+        super(id,e,vA);
+        this.opcoes= op;
+        this.jogos = jgs;
+        this.totalOdds = odds;
+    }
     public ApostaMultipla(ApostaMultipla a){
         super(a);
     }
@@ -81,4 +87,9 @@ public class ApostaMultipla extends Aposta{
     public ApostaMultipla clone() {
         return new ApostaMultipla(this);
     }
+
+    public List<Integer> getOpcoes() {
+        return opcoes;
+    }
 }
+

@@ -7,6 +7,7 @@ import Model.UtilizadorAutenticado;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class ApostaDAO {
@@ -111,7 +112,7 @@ public class ApostaDAO {
         ArrayList<Integer> j = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD)){
              Statement stm = conn.createStatement();
-             ResultSet rsjogos = stm.executeQuery("SELECT * FROM ApostaJogos WHERE id='" + id + "' ");
+             ResultSet rsjogos = stm.executeQuery("SELECT * FROM ApostaJogo WHERE idAposta='" + id + "' ");
             while (rsjogos.next()) {
                 i.add(rsjogos.getString("idJogo"));
                 j.add(rsjogos.getInt("opcao"));
@@ -128,4 +129,66 @@ public class ApostaDAO {
         }
         return a;
     }
+
+
+    public void put(String email, ApostaSimples a) {
+        int id=0;
+        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD)){
+            Statement stm = conn.createStatement();
+            stm.executeUpdate(
+                    "INSERT INTO Aposta (idUtilizador,valorApostado,estado) VALUES ('" + email + "','" + a.getValorApostado()  +  "','" +a.getEstado() +
+                    "')");
+            ResultSet rs =stm.executeQuery(
+                    "SELECT id FROM Aposta ORDER BY ID DESC LIMIT 1"
+            );
+             if(rs.next()) id = rs.getInt("id");
+            stm.executeUpdate(
+                    "INSERT INTO ApostaJogo VALUES ('" + id + "','" + a.getJogo().getId()  +  "','" +a.getOpcao() +
+                            "')");
+
+        }catch (SQLException e) {
+            // Database error!
+            e.printStackTrace();
+            throw new NullPointerException(e.getMessage());
+        }
+    }
+
+    public void put(String email, ApostaMultipla a) {
+        int id=0;
+        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD)){
+            Statement stm = conn.createStatement();
+            stm.executeUpdate(
+                    "INSERT INTO Aposta (idUtilizador,valorApostado,estado) VALUES ('" + email + "','" + a.getValorApostado()  +  "','" +a.getEstado() +
+                            "')");
+            ResultSet rs =stm.executeQuery(
+                    "SELECT id FROM Aposta ORDER BY ID DESC LIMIT 1"
+            );
+            if(rs.next()) id = rs.getInt("id");
+            for(int i = 0;i<a.getOpcoes().size();i++)
+            stm.executeUpdate(
+                    "INSERT INTO ApostaJogo VALUES ('" + id + "','" + a.getJogos().get(i).getId()  +  "','" +a.getOpcoes().get(i) +
+                            "')");
+
+        }catch (SQLException e) {
+            // Database error!
+            e.printStackTrace();
+            throw new NullPointerException(e.getMessage());
+        }
+    }
+
+  /*  public void addAposta(int id, String email, double valor, String estado, List<String> jogos, List<Integer> opcoes){
+        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD)){
+            Statement stm = conn.createStatement();
+            stm.executeUpdate(String.format("INSERT INTO Aposta VALUES (%d,'%s',%d,'%s')",id,email,valor,estado));
+            int i = 0;
+            for(String j : jogos){
+                stm.executeUpdate(String.format("INSERT INTO ApostaJogo VALUES (%d,'%s',%d)",id,j,opcoes.get(i)));
+                i++;
+            }
+        }catch (Exception e) {
+            // Database error!
+            e.printStackTrace();
+            throw new NullPointerException(e.getMessage());
+        }
+*/
 }

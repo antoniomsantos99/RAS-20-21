@@ -24,12 +24,23 @@ soccer Futebol
 tennis Ténis
 tongues Mudar idioma
 newtongue Mudar idioma para
+wallet Carteira
+deposit Depositar Dinheiro
+retrieve Levantar Dinheiro
+depositValue Valor a depositar
+retrieveValue Valor a levantar
+noMoney Não tem dinheiro suficiente
+exchange Câmbio de moeda
 wannaBet Deseja apostar? (Y/N)
 choose Insira o ID do jogo:
 choice Escolha entre Home, Tie e Away.
 howMuch Quanto quer apostar?
 currency Escolha a moeda:
-
+editPass Editar Password
+editUsername Editar Username
+newPass Nova Password:
+newUsername Novo Username:
+editProfile Editar Perfil
 -en
 welcome Welcome to RASBet!
 loginmenu Login Menu
@@ -56,8 +67,20 @@ soccer Soccer
 tennis Tennis
 tongues Change language
 newtongue Change language to
+wallet Wallet
+deposit Deposit Money
+retrieve Retrieve Money
+depositValue Value to Deposit
+noMoney Not enough money
+retrieveValue Value to retrieve
+exchange Coin exchange
 wannaBet Wanna bet? (Y/N)
 choose Insert the ID of the game:
 howMuch How much do you want to bet?
 choice Choose between Home, Tie and Away.
 currency Choose your currency:
+editPass Edit Password
+editUsername Edit Username
+newPass New Password:
+newUsername New Username:
+editProfile Edit Profile

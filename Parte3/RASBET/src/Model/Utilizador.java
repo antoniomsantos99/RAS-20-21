@@ -24,9 +24,7 @@ public abstract class Utilizador {
         this.loggedIn = loggedIn;
     }
 
-    public void realizarApostas(){
 
-    }
 
     public boolean isLoggedIn(){
         return loggedIn;

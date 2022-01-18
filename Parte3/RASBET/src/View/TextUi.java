@@ -1,9 +1,7 @@
 package View;
 
 import Controller.RASBet;
-import Exceptions.PasswordIncorreta;
-import Exceptions.UtilizadorExistente;
-import Exceptions.UtilizadorNExistente;
+import Exceptions.*;
 import Languages.gestorIdiomas;
 import Model.Competicao;
 import com.sun.source.tree.WhileLoopTree;
@@ -12,6 +10,10 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.*;
 
 public class TextUi {
@@ -55,7 +57,8 @@ public class TextUi {
                 "wallet",
                 "loginmenu",
                 "signmenu",
-                "tongues"
+                "tongues",
+                "editProfile"
         }, gestIdiomas);
 
         menu.setHandler(1, this::menuDesportos);
@@ -63,9 +66,38 @@ public class TextUi {
         menu.setHandler(3, this::tratarLogin);
         menu.setHandler(4, this::tratarRegisto);
         menu.setHandler(5, this::menuLingua);
+        menu.setHandler(6, this::menuPerfil);
 
         menu.run();
     }
+
+
+    private void menuPerfil(){
+        Menu menu = new Menu(new String[]{
+                "editUsername",
+                "editPass"
+        },gestIdiomas);
+
+        menu.setHandler(1, this::menuUsername);
+        menu.setHandler(2, this::menuPassword);
+
+        menu.run();
+    }
+
+    private void menuPassword(){
+        System.out.println(gestIdiomas.getTexto("newpass"));
+        String pass = scin.nextLine();
+        rasbet.mudarPass(id_user_atual,pass);
+
+    }
+
+    private void menuUsername(){
+        System.out.println(gestIdiomas.getTexto("newUsername"));
+        String username = scin.nextLine();
+        rasbet.mudarUsername(id_user_atual,username);
+    }
+
+
 
     private void menuDesportos(){
         Menu menu = new Menu(new String[]{
@@ -80,6 +112,7 @@ public class TextUi {
     }
 
     private void menuCarteira(){
+        System.out.println(rasbet.getCarteira());
         Menu menu = new Menu(new String[]{
                 "deposit",
                 "retrieve",
@@ -196,9 +229,11 @@ public class TextUi {
         System.out.println(gestIdiomas.getTexto("wannaBet"));
 
         String resp = scin.next();
-
-        if(Objects.equals(resp, "Y")) tratarAposta(i);
-
+        try {
+            if(Objects.equals(resp, "Y")) tratarAposta();
+        }catch (JogoNExistente e){
+            System.out.println("Jogo nao existe");
+        }
 
     }
 
@@ -208,13 +243,17 @@ public class TextUi {
         System.out.println(gestIdiomas.getTexto("gameslist"));
         System.out.println(rasbet.getJogosWithOdds().toString());
 
-        Menu menu = new Menu(new String[]{
-                "bet"
-        },gestIdiomas);
+        System.out.println(gestIdiomas.getTexto("wannaBet"));
 
-        //menu.setHandler(1, this::tratarAposta());
+        String resp = scin.next();
+        try {
+            if(Objects.equals(resp, "Y"))
+                tratarAposta();
+        }catch (JogoNExistente e){
+            System.out.println("Jogo nao existe");
+        }
 
-       // menu.run();
+
     }
 
 
@@ -242,8 +281,9 @@ public class TextUi {
         gestIdiomas.setIdioma(scin.nextLine());
     }
 
-    private void tratarAposta(String id_jogo){
+    private void tratarAposta()throws JogoNExistente{
         float odd=0;
+        boolean success = false;
         if(id_user_atual == null){
            Menu menu = new Menu(new String[]{
                            "loginmenu",
@@ -256,53 +296,51 @@ public class TextUi {
         menu.run();
         }
 
-        else{
-            Map<String,Float> ids = new HashMap<>();
-            int done=0;
-            while(done==0) {
+        else {
+            Map<String, Float> ids = new HashMap<>();
+            List<String> choices = new ArrayList<>();
+            int done = 0;
+            String resp = "";
+            String respo = "";
+            while (done == 0) {
                 System.out.println(gestIdiomas.getTexto("choose"));
-                String resp = scin.next();
-                System.out.println(gestIdiomas.getTexto("choice"));
-                String respo = scin.next();
+                resp = scin.next();
 
-                if (Objects.equals(resp, "-1")) done = 1;
+                if (Objects.equals(resp, "-1")) {
+                    done = 1;
+                }
+                else if(!rasbet.existeJogo(resp)) throw new JogoNExistente();
                 else {
-                    if(respo.equals("Home")) odd = rasbet.getOddJogo(resp,1);
-                    if(respo.equals("Tie")) odd= rasbet.getOddJogo(resp,2);
-                    if(respo.equals("Away")) odd = rasbet.getOddJogo(resp,3);
-                    ids.put(resp,odd);
+                    System.out.println(gestIdiomas.getTexto("choice"));
+                    respo = scin.next();
+                    if (respo.equals("Home")) odd = rasbet.getOddJogo(resp, 1);
+                    if (respo.equals("Tie")) odd = rasbet.getOddJogo(resp, 2);
+                    if (respo.equals("Away")) odd = rasbet.getOddJogo(resp, 3);
+                    ids.put(resp, odd);
+                    choices.add(respo);
                 }
             }
 
-            if(ids.size()==1){
-
+            if (ids.size() == 1) {
                 System.out.println(gestIdiomas.getTexto("howMuch"));
                 float valor = scin.nextFloat();
-                odd = ids.get(0);
-                System.out.printf("odd- %f%n",odd);
-                System.out.println(gestIdiomas.getTexto("currency"));
 
-                //rasbet.fazerApostaSimples(ids.get(0),odd,valor);
-            }
-            else{
+                odd = (float) ids.values().toArray()[0];
+                System.out.println(gestIdiomas.getTexto("currency"));
+                String moeda = scin.next();
+
+                if(!rasbet.fazerApostaSimples((String) ids.keySet().toArray()[0],odd,valor,moeda,respo)) System.out.println(gestIdiomas.getTexto("noMoney"));
+            } else {
                 System.out.println(gestIdiomas.getTexto("howMuch"));
                 float valor = scin.nextFloat();
                 System.out.println(gestIdiomas.getTexto("currency"));
-                for(String jogo : ids.keySet()){
-                    //
-                }
+                String moeda = scin.next();
+                if(!rasbet.fazerApostaMultipla(ids,choices,valor,moeda))System.out.println(gestIdiomas.getTexto("noMoney"));
 
             }
-
-
-
-
-
-
         }
-
-
     }
+
 
     private void tratarLogin(){
         int i =1;
@@ -335,8 +373,18 @@ public class TextUi {
     }
 
 
-
-
+    public static int calculateAge(LocalDate birthDate, LocalDate currentDate) {
+        if ((birthDate != null) && (currentDate != null)) {
+            return Period.between(birthDate, currentDate).getYears();
+        } else {
+            return 0;
+        }
+    }
+    public LocalDate convertToLocalDateViaMilisecond(Date dateToConvert) {
+        return Instant.ofEpochMilli(dateToConvert.getTime())
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+    }
     private void tratarRegisto(){
         try{
             int i =1;
@@ -362,12 +410,14 @@ public class TextUi {
             System.out.println("Data Nascimento (yyyy/mm/dd):");
             dataN = scin.nextLine();
             DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-            Date date = format.parse(dataN);
+            Date data = format.parse(dataN);
+            LocalDate localdata = convertToLocalDateViaMilisecond(data);
+            if(calculateAge(localdata,LocalDate.now())<18) throw new MenorIdade();
 
             rasbet.registarUtilizador(username,email,password);
             System.out.printf((gestIdiomas.getTexto("signSuccess")) + "%n",email);
 
-        } catch(NullPointerException | UtilizadorExistente | ParseException e){
+        } catch(NullPointerException | UtilizadorExistente | MenorIdade | ParseException e){
             if (e instanceof UtilizadorExistente)
                 System.out.println(gestIdiomas.getTexto("userExists"));
 

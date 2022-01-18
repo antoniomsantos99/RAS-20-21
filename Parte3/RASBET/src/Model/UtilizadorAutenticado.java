@@ -1,5 +1,8 @@
 package Model;
 
+import Data.ApostaDAO;
+import Data.UtilizadorDAO;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
@@ -77,6 +80,18 @@ public class UtilizadorAutenticado extends Utilizador {
         this.data_nascimento = data_nascimento;
     }
 
+
+    public void addAposta(ApostaSimples a, float valor, String moeda){
+        historico.add(a);
+        carteira.addMoeda(moeda, -Math.abs(valor));
+        ApostaDAO.getInstance().put(email,a);
+    }
+
+    public void addAposta(ApostaMultipla a, float valor, String moeda){
+        historico.add(a);
+        carteira.addMoeda(moeda, -Math.abs(valor));
+        ApostaDAO.getInstance().put(email,a);
+    }
 
     public void setHistorico(ArrayList<Aposta> hist) {
         this.historico=new ArrayList<>();
