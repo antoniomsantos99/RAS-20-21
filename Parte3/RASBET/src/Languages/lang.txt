@@ -14,6 +14,8 @@ leave 0 - Sair
 optionNotFound Opção indisponível! Tente novamente.
 option Opção:
 invalidOption Opção inválida!
+gameslist Jogos
+bet Apostar
 
 -en
 welcome Welcome to RASBet!
@@ -31,3 +33,5 @@ leave 0 - Leave
 optionNotFound Option not available! Try again
 option Option:
 invalidOption Invalid option!
+gameslist Games
+bet Bet
