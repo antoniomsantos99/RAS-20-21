@@ -12,6 +12,12 @@ import java.util.Map;
 public class ApostaDAO {
     private static ApostaDAO singleton = null;
 
+
+    /**
+     * Implementação do padrão Singleton
+     *
+     * @return devolve a instância única desta classe
+     */
     public static ApostaDAO getInstance() {
         if (ApostaDAO.singleton == null) {
             ApostaDAO.singleton = new ApostaDAO();
@@ -20,7 +26,7 @@ public class ApostaDAO {
     }
 
     /**
-     * @return número de desportos na base de dados
+     * @return número de apostas na base de dados
      */
 
     public int size() {
@@ -41,9 +47,9 @@ public class ApostaDAO {
     }
 
     /**
-     * Método que verifica se existem desportos
      *
-     * @return true se existirem 0 desportos
+     * Método que verifica se existem apostas
+     * @return true se existirem 0 apostas
      */
 
     public boolean isEmpty() {
@@ -51,19 +57,19 @@ public class ApostaDAO {
     }
 
     /**
-     * Método que verifica se um id de um desporto existe na base de dados
+     * Método que verifica se um id de uma aposta existe na base de dados
      *
-     * @param idD desporto
-     * @return true se o desporto existe
+     * @param idA aposta
+     * @return true se o aposta existe
      * @throws NullPointerException
      */
 
-    public boolean containsKey(Object idD) {
+    public boolean containsKey(Object idA) {
         boolean r;
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
              Statement stm = conn.createStatement();
              ResultSet rs =
-                     stm.executeQuery("SELECT id FROM Aposta WHERE id='" + idD.toString() + "'")) {
+                     stm.executeQuery("SELECT id FROM Aposta WHERE id='" + idA.toString() + "'")) {
             r = rs.next();
         } catch (SQLException e) {
             // Database error!

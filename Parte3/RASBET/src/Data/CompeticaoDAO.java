@@ -26,7 +26,7 @@ public class CompeticaoDAO {
     }
 
     /**
-     * @return número de desportos na base de dados
+     * @return número de competicoes na base de dados
      */
 
     public int size() {
@@ -47,9 +47,9 @@ public class CompeticaoDAO {
     }
 
     /**
-     * Método que verifica se existem Jogos
+     * Método que verifica se existem competicoes
      *
-     * @return true se existirem 0 Jogos
+     * @return true se existirem 0 competicoes
      */
 
     public boolean isEmpty() {
@@ -57,19 +57,19 @@ public class CompeticaoDAO {
     }
 
     /**
-     * Método que verifica se um id de um Jogo existe na base de dados
+     * Método que verifica se um id de uma competicao existe na base de dados
      *
-     * @param idJ Jogo
-     * @return true se o Jogo existe
+     * @param idC Competicao
+     * @return true se o Competicao existe
      * @throws NullPointerException
      */
 
-    public boolean containsKey(Object idJ) {
+    public boolean containsKey(Object idC) {
         boolean r;
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
              Statement stm = conn.createStatement();
              ResultSet rs =
-                     stm.executeQuery("SELECT id FROM Competicao WHERE id='" + idJ.toString() + "'")) {
+                     stm.executeQuery("SELECT id FROM Competicao WHERE id='" + idC.toString() + "'")) {
             r = rs.next();
         } catch (SQLException e) {
             // Database error!
@@ -80,10 +80,10 @@ public class CompeticaoDAO {
     }
 
     /**
-     * Verifica se um Jogo existe na base de dados
+     * Verifica se uma Competicao existe na base de dados
      *
      * @param value
-     * @return true caso o Jogo exista, false caso contrario
+     * @return true caso a Competicao exista, false caso contrario
      * @throws NullPointerException
      */
 

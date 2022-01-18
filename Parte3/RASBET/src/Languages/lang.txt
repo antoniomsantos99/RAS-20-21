@@ -1,5 +1,5 @@
 -pt
-welcome Bem Vindx ao RASBet!
+welcome Bem Vindo ao RASBet!
 loginmenu Menu de Login
 signmenu Menu de Registo
 userauth Utilizador Autenticado.
@@ -31,7 +31,11 @@ depositValue Valor a depositar
 retrieveValue Valor a levantar
 noMoney Não tem dinheiro suficiente para levantar
 exchange Câmbio de moeda
-
+wannaBet Deseja apostar? (Y/N)
+choose Insira o ID do jogo:
+choice Escolha entre Home, Tie e Away.
+howMuch Quanto quer apostar?
+currency Escolha a moeda:
 
 -en
 welcome Welcome to RASBet!
@@ -66,3 +70,8 @@ depositValue Value to Deposit
 noMoney Not enough money to retrieve
 retrieveValue Value to retrieve
 exchange Coin exchange
+wannaBet Wanna bet? (Y/N)
+choose Insert the ID of the game:
+howMuch How much do you want to bet?
+choice Choose between Home, Tie and Away.
+currency Choose your currency:

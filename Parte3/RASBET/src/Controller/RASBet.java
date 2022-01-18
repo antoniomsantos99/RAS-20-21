@@ -86,6 +86,10 @@ public class RASBet {
         return user.getCarteira().getExchangeRate(m1,m2);
     }
 
+
+    public float getOddJogo(String id, int escolha){
+        return JogoDAO.getInstance().getOdd(id,escolha);
+    }
 /*
     public void fazerAposta(String id_utilizador, String e, Float va) {
         Aposta a = Aposta(e, va);
