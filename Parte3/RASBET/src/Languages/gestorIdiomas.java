@@ -42,6 +42,7 @@ public class gestorIdiomas
     }
 
     public String getTexto(String key){
+        //System.out.println(key);
         return this.langMap.get(this.currentLingua).get(key);
     }
 }

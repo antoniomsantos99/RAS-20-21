@@ -1,6 +1,5 @@
 package Model;
 
-import java.util.Objects;
 
 public abstract class Utilizador {
     private boolean loggedIn;

@@ -25,6 +25,7 @@ tennis Ténis
 tongues Mudar idioma
 newtongue Mudar idioma para
 
+
 -en
 welcome Welcome to RASBet!
 loginmenu Login Menu

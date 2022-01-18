@@ -9,7 +9,7 @@ public class Competicao {
         this.id = "";
     }
 
-    public Competicao(String n, String id){
+    public Competicao(String id, String n){
         this.nome=n;
         this.id=id;
     }
@@ -41,8 +41,7 @@ public class Competicao {
     @Override
     public String toString() {
         return "Competicao{" +
-                "nome='" + nome + '\'' +
-                ", id='" + id + '\'' +
+                "nome='" + nome + '\''+
                 '}';
     }
 }

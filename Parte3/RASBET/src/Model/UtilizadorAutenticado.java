@@ -1,6 +1,5 @@
 package Model;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
@@ -15,9 +14,9 @@ public class UtilizadorAutenticado extends Utilizador {
 
     public UtilizadorAutenticado(){
         super();
-        this.username = new String();
-        this.email = new String();
-        this.password= new String();
+        this.username = "";
+        this.email = "";
+        this.password= "";
         this.data_nascimento = new Date();
         this.carteira = new Carteira();
         this.historico = new ArrayList<>();
@@ -31,14 +30,6 @@ public class UtilizadorAutenticado extends Utilizador {
         this.password=p;
         this.carteira = c;
         this.historico= hist;
-    }
-
-    public UtilizadorAutenticado(UtilizadorAutenticado u){
-        super(u);
-        setUsername(u.getUsername());
-        setEmail(u.getEmail());
-        setPassword(u.getPassword());
-        setHistorico(u.getHistorico());
     }
 
     public String getUsername() {
@@ -89,8 +80,7 @@ public class UtilizadorAutenticado extends Utilizador {
 
     public void setHistorico(ArrayList<Aposta> hist) {
         this.historico=new ArrayList<>();
-        for(Aposta a : hist)
-            this.historico.add(a);
+        this.historico.addAll(hist);
     }
 
     @Override
@@ -118,7 +108,7 @@ public class UtilizadorAutenticado extends Utilizador {
     }
 
 
-    protected Object clone() {
+    /*protected Object clone() {
         return new UtilizadorAutenticado(this);
-    }
+    }*/
 }

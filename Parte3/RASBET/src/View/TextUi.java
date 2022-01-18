@@ -3,15 +3,15 @@ package View;
 import Controller.RASBet;
 import Exceptions.PasswordIncorreta;
 import Exceptions.UtilizadorExistente;
+import Exceptions.UtilizadorNExistente;
 import Languages.gestorIdiomas;
+import Model.Competicao;
 
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 public class TextUi {
     private final Scanner scin;
@@ -33,78 +33,108 @@ public class TextUi {
     }
 
     private void menuPrincipal() {
-        Menu menu = new Menu(new String[] {
-                gestIdiomas.getTexto("sports"),
-                gestIdiomas.getTexto("bet"),
-                gestIdiomas.getTexto("loginmenu"),
-                gestIdiomas.getTexto("signmenu"),
-                gestIdiomas.getTexto("tongues")
-        },gestIdiomas);
+        Menu menu = new Menu(new String[]{
+                "sports",
+                "loginmenu",
+                "signmenu",
+                "tongues"
+        }, gestIdiomas);
 
         menu.setHandler(1, this::menuDesportos);
-       // menu.setHandler(2, this::menuAposta);
-        menu.setHandler(3, this::menuLogin);
-        menu.setHandler(4, this::menuRegisto);
-        menu.setHandler(5, this::menuLingua);
+        menu.setHandler(2, this::tratarLogin);
+        menu.setHandler(3, this::tratarRegisto);
+        menu.setHandler(4, this::menuLingua);
 
         menu.run();
     }
 
     private void menuDesportos(){
-        gestIdiomas.getTexto("sportslist");
         Menu menu = new Menu(new String[]{
-                gestIdiomas.getTexto("soccer"),
-                gestIdiomas.getTexto("tennis")
+                "soccer",
+                "tennis"
         },gestIdiomas);
-/*
+
         menu.setHandler(1, this::menuFutebol);
         menu.setHandler(2, this::menuTenis);
-*/
+
         menu.run();
     }
 
-/*
+
     private void menuFutebol(){
         int i =0;
-        List<Competicao> comp = rasbet.getCompeticoes('1');
-        for (Competicao c : comp)
-            System.out.println(i + c.toString);
+        int index=100;
+        List<Competicao> ras = rasbet.getCompeticoes('f');
+        int size= ras.size();
+        while(index>size || index <= 0) {
+            for (i = 0; i < size; i++)
+                System.out.printf("%d - %s%n", i + 1, ras.get(i).getNome());
+            System.out.printf("%d - %s%n", i+1, gestIdiomas.getTexto("games"));
+            System.out.println("Opcao:");
+            index = scin.nextInt();
+        }
+        if(index==size)menuJogos();
+        else  menuJogosFromComp(ras.get(index-1).getId());
+
 
     }
+
+    private void menuJogosFromComp(String i){
+        System.out.println(gestIdiomas.getTexto("gameslist"));
+        System.out.println(rasbet.getJogosWithOddsFromComp(i).toString());
+
+        Menu menu = new Menu(new String[]{
+                "bet"
+        },gestIdiomas);
+
+        menu.setHandler(1, this::tratarAposta);
+
+        menu.run();
+    }
+
+
+
+    private void menuJogos(){
+        System.out.println(gestIdiomas.getTexto("gameslist"));
+        System.out.println(rasbet.getJogosWithOdds().toString());
+
+        Menu menu = new Menu(new String[]{
+                "bet"
+        },gestIdiomas);
+
+        menu.setHandler(1, this::tratarAposta);
+
+        menu.run();
+    }
+
 
     private void menuTenis(){
-        System.out.println(rasbet.getCompeticoes('2').toString());
+        int i =0;
+        int index=100;
+        List<Competicao> ras = rasbet.getCompeticoes('t');
+        int size= ras.size();
+        while(index>size || index <= 0) {
+            for (i = 0; i < size; i++)
+                System.out.printf("%d - %s%n", i + 1, ras.get(i).getNome());
+            System.out.printf("%d - %s%n", i+1, gestIdiomas.getTexto("games"));
+            System.out.println(gestIdiomas.getTexto("option"));
+            index = scin.nextInt();
+        }
+        if(index==size)menuJogos();
+        else  menuJogosFromComp(ras.get(index-1).getId());
     }
-*/
 
-    private void menuLogin(){
-        Menu menu = new Menu(new String[]{
-                gestIdiomas.getTexto("userauth"),
-                gestIdiomas.getTexto("usernoauth")
-        },gestIdiomas);
 
-        menu.setHandler(1, this::tratarLogin);
-        menu.setHandler(2, this::tratarRegisto);
-
-        menu.run();
-    }
-
-    private void menuRegisto(){
-        Menu menu = new Menu(new String[]{
-                gestIdiomas.getTexto("userauth"),
-                gestIdiomas.getTexto("usernoauth")
-        },gestIdiomas);
-
-        menu.setHandler(1, this::tratarLogin);
-        menu.setHandler(2, this::tratarRegisto);
-
-        menu.run();
-    }
 
     private void menuLingua(){
         System.out.println(Arrays.toString(gestIdiomas.getIdiomasDisponiveis()));
         System.out.println(gestIdiomas.getTexto("newtongue"));
         gestIdiomas.setIdioma(scin.nextLine());
+    }
+
+
+    private void tratarAposta(){
+
     }
 
     private void tratarLogin(){
@@ -124,7 +154,7 @@ public class TextUi {
         //here it sends to controller
             rasbet.login(email,password);
 
-        } catch(NullPointerException | PasswordIncorreta e){
+        } catch(NullPointerException | PasswordIncorreta | UtilizadorNExistente e){
             if (e instanceof PasswordIncorreta)
                 System.out.println(gestIdiomas.getTexto("badPass"));
 
@@ -165,7 +195,7 @@ public class TextUi {
             Date date = format.parse(dataN);
 
             rasbet.registarUtilizador(username,email,password);
-            System.out.println(String.format(gestIdiomas.getTexto("signSuccess"),email));
+            System.out.printf((gestIdiomas.getTexto("signSuccess")) + "%n",email);
 
         } catch(NullPointerException | UtilizadorExistente | ParseException e){
             if (e instanceof UtilizadorExistente)

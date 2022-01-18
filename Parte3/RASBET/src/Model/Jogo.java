@@ -125,14 +125,14 @@ public class Jogo {
     public String toString() {
         return "Jogo{" +
                 "id='" + id + '\'' +
-                ", competicao='" + competicao + '\'' +
+                //", competicao='" + competicao + '\'' +
                 ", participante1='" + participante1 + '\'' +
                 ", participante2='" + participante2 + '\'' +
                 ", odds=" + Arrays.toString(odds) +
-                ", resultado='" + resultado + '\'' +
+                //", resultado='" + resultado + '\'' +
                 ", data=" + data +
-                ", localizacao='" + localizacao + '\'' +
+                //", localizacao='" + localizacao + '\'' +
                 ", estado='" + estado + '\'' +
-                '}';
+                '}'+'\n';
     }
 }
