@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class gestorIdiomas
 {
-    private String currentLingua = "en";
+    private String currentLingua = "pt";
     private HashMap<String,HashMap<String,String>> langMap;
 
     public gestorIdiomas() throws IOException {

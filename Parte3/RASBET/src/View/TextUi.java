@@ -40,7 +40,7 @@ public class TextUi {
         },gestIdiomas);
 
         menu.setHandler(1, this::menuJogos);
-        menu.setHandler(2, this::menuAposta);
+        //menu.setHandler(2, this::menuAposta);
         menu.setHandler(3, this::menuLogin);
         menu.setHandler(4, this::menuRegisto);
 
@@ -50,7 +50,7 @@ public class TextUi {
 
     private void menuJogos(){
         System.out.println("Jogos disponíveis para apostar:");
-        rasbet.getJogos();
+        System.out.println(rasbet.getJogosWithOdds().toString());
 
         
     }

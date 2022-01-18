@@ -110,9 +110,41 @@ public class JogoDAO {
              Statement stm = conn.createStatement();
              ResultSet rs = stm.executeQuery("SELECT * FROM Jogo WHERE id='" + id + "'");
              if (rs.next()) {  // A chave existe na tabela
-                a = new Jogo(rs.getInt("id"),rs.getString("Competicao"),rs.getString("participante1"),rs.getString("participante2"), rs.getFloat("Odd1") ,rs.getFloat("Odd2")  ,rs.getFloat("Odd3")  ,rs.getString("resultado"),rs.getTimestamp("data") ,rs.getString("localizacao"),rs.getString("estado"));
+                a = new Jogo(rs.getString("id"),rs.getString("Competicao"),rs.getString("participante1"),rs.getString("participante2"), rs.getFloat("Odd1") ,rs.getFloat("Odd2")  ,rs.getFloat("Odd3")  ,rs.getString("resultado"),rs.getTimestamp("data") ,rs.getString("localizacao"),rs.getString("estado"));
             }
          } catch(SQLException e) {
+            // Database error!
+            e.printStackTrace();
+            throw new NullPointerException(e.getMessage());
+        }
+        return a;
+    }
+
+    public ArrayList<Jogo> getJogosWithOdds() {
+        ArrayList<Jogo> a = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD)){
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM Jogo WHERE odd1 != 0");
+            while (rs.next()) {  // A chave existe na tabela
+                a.add(new Jogo(rs.getString("id"),rs.getString("Competicao"),rs.getString("participante1"),rs.getString("participante2"), rs.getFloat("Odd1") ,rs.getFloat("Odd2")  ,rs.getFloat("Odd3")  ,rs.getString("resultado"),rs.getTimestamp("data") ,rs.getString("localizacao"),rs.getString("estado")));
+            }
+        } catch(SQLException e) {
+            // Database error!
+            e.printStackTrace();
+            throw new NullPointerException(e.getMessage());
+        }
+        return a;
+    }
+
+    public ArrayList<Jogo> getAllJogos() {
+        ArrayList<Jogo> a = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD)){
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM Jogo");
+            if (rs.next()) {  // A chave existe na tabela
+                a.add(new Jogo(rs.getString("id"),rs.getString("Competicao"),rs.getString("participante1"),rs.getString("participante2"), rs.getFloat("Odd1") ,rs.getFloat("Odd2")  ,rs.getFloat("Odd3")  ,rs.getString("resultado"),rs.getTimestamp("data") ,rs.getString("localizacao"),rs.getString("estado")));
+            }
+        } catch(SQLException e) {
             // Database error!
             e.printStackTrace();
             throw new NullPointerException(e.getMessage());

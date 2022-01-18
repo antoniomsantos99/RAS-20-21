@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Jogo {
-    private int id;
+    private String id;
     private String competicao;
     private String participante1;
     private String participante2;
@@ -19,7 +19,7 @@ public class Jogo {
 
 
     public Jogo(){
-        this.id=0;
+        this.id="";
         this.competicao = "";
         this.participante1 = "";
         this.participante2 = "";
@@ -30,7 +30,7 @@ public class Jogo {
         this.estado = "";
     }
 
-    public Jogo(int id,String c, String p1, String p2,float o1,float o2,float o3, String r, Date dt, String l,String e){
+    public Jogo(String id,String c, String p1, String p2,float o1,float o2,float o3, String r, Date dt, String l,String e){
         this.id=id;
         this.competicao=c;
         this.participante1 = p1;
@@ -54,7 +54,7 @@ public class Jogo {
 
     // SETS ---------------------------------------
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -88,7 +88,7 @@ public class Jogo {
 
     // GETS ---------------------------------------
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -119,5 +119,20 @@ public class Jogo {
 
     protected Jogo clone()  {
         return new Jogo(this);
+    }
+
+    @Override
+    public String toString() {
+        return "Jogo{" +
+                "id='" + id + '\'' +
+                ", competicao='" + competicao + '\'' +
+                ", participante1='" + participante1 + '\'' +
+                ", participante2='" + participante2 + '\'' +
+                ", odds=" + Arrays.toString(odds) +
+                ", resultado='" + resultado + '\'' +
+                ", data=" + data +
+                ", localizacao='" + localizacao + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
     }
 }

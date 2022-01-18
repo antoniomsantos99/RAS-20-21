@@ -101,13 +101,13 @@ public class ApostaDAO {
 
     public Aposta get(Object id) {
         Aposta a = null;
-        ArrayList<Integer> i = new ArrayList<>();
+        ArrayList<String> i = new ArrayList<>();
         ArrayList<Integer> j = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD)){
              Statement stm = conn.createStatement();
              ResultSet rsjogos = stm.executeQuery("SELECT * FROM ApostaJogos WHERE id='" + id + "' ");
             while (rsjogos.next()) {
-                i.add(rsjogos.getInt("idJogo"));
+                i.add(rsjogos.getString("idJogo"));
                 j.add(rsjogos.getInt("opcao"));
             }
              ResultSet rs = stm.executeQuery("SELECT * FROM Aposta WHERE id='" + id + "' ");

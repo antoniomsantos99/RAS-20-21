@@ -57,4 +57,8 @@ public class RASBet {
         return JogoDAO.getInstance().getJogos();
     }
 
+    public List<Jogo> getJogosWithOdds(){
+        return JogoDAO.getInstance().getJogosWithOdds();
+    }
+
 }
