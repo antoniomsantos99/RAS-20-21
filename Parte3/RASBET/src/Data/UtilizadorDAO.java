@@ -225,7 +225,7 @@ public class UtilizadorDAO implements Map<String,UtilizadorAutenticado>{
         Set<Entry<String, UtilizadorAutenticado>> setReturn = new HashSet<Map.Entry<String, UtilizadorAutenticado>>();
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD);
              Statement stm = conn.createStatement();
-             ResultSet rs = stm.executeQuery("SELECT codQR FROM paletes")) {
+             ResultSet rs = stm.executeQuery("SELECT * FROM Utilizador")) {
             while(rs.next()){
                 Map.Entry<String, UtilizadorAutenticado> entry = new HashMap.SimpleEntry<String, UtilizadorAutenticado>(rs.getString("email"), this.get(rs.getString("email")));
                 setReturn.add(entry);
