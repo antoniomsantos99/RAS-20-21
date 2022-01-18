@@ -24,6 +24,13 @@ soccer Futebol
 tennis Ténis
 tongues Mudar idioma
 newtongue Mudar idioma para
+wallet Carteira
+deposit Depositar Dinheiro
+retrieve Levantar Dinheiro
+depositValue Valor a depositar
+retrieveValue Valor a levantar
+noMoney Não tem dinheiro suficiente para levantar
+exchange Câmbio de moeda
 
 
 -en
@@ -52,3 +59,10 @@ soccer Soccer
 tennis Tennis
 tongues Change language
 newtongue Change language to
+wallet Wallet
+deposit Deposit Money
+retrieve Retrieve Money
+depositValue Value to Deposit
+noMoney Not enough money to retrieve
+retrieveValue Value to retrieve
+exchange Coin exchange

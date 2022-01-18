@@ -1,6 +1,8 @@
 package Model;
 
 
+import Data.MoedaDAO;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,19 +17,36 @@ public class Carteira {
 */
 
     public Carteira(){
+
         moedas = new HashMap<>();
-    }
-    /*
-        public Carteira(float euro,float usd, float gbp, float ada){
-            this.eur = 0;
-            this.usd = 0;
-            this.gbp = 0;
-            this.ada = 0;
+        for(Moeda m : MoedaDAO.getInstance().getMoedas()){
+            moedas.put(m,0d);
         }
-    */
-    public void addMoeda(Moeda m, double d) {
-        double before = moedas.getOrDefault(m, 0.0);
-        moedas.put(m,before+d);
+    }
+
+    public double getValorMoeda(String moeda) {
+        for (Moeda m : moedas.keySet())
+            if(m.getNome().equals(moeda))
+                return moedas.get(m);
+        return 0;
+    }
+
+    public double getExchangeRate(String moeda,String moeda2) {
+        double ex1 = 0,ex2 = 1;
+        for (Moeda m : moedas.keySet())
+            if(m.getNome().equals(moeda))
+                ex1 = m.getExchange();
+            else if(m.getNome().equals(moeda2))
+                ex2 = m.getExchange();
+        return ex1/ex2;
+    }
+
+
+        public void addMoeda(String moeda, double d) {
+       for (Moeda m : moedas.keySet())
+           if(m.getNome().equals(moeda))
+               moedas.put(m,moedas.get(m)+d);
+
     }
 
     @Override

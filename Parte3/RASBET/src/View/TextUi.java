@@ -6,6 +6,7 @@ import Exceptions.UtilizadorExistente;
 import Exceptions.UtilizadorNExistente;
 import Languages.gestorIdiomas;
 import Model.Competicao;
+import com.sun.source.tree.WhileLoopTree;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -17,7 +18,7 @@ public class TextUi {
     private final Scanner scin;
     private final RASBet rasbet;
     private final gestorIdiomas gestIdiomas;
-    private final String id_user_atual;
+    private String id_user_atual;
 
     public TextUi() throws IOException {
         this.gestIdiomas = new gestorIdiomas();
@@ -48,6 +49,24 @@ public class TextUi {
         menu.run();
     }
 
+    private void menuPrincipalAuth() {
+        Menu menu = new Menu(new String[]{
+                "sports",
+                "wallet",
+                "loginmenu",
+                "signmenu",
+                "tongues"
+        }, gestIdiomas);
+
+        menu.setHandler(1, this::menuDesportos);
+        menu.setHandler(2, this::menuCarteira);
+        menu.setHandler(3, this::tratarLogin);
+        menu.setHandler(4, this::tratarRegisto);
+        menu.setHandler(5, this::menuLingua);
+
+        menu.run();
+    }
+
     private void menuDesportos(){
         Menu menu = new Menu(new String[]{
                 "soccer",
@@ -60,6 +79,97 @@ public class TextUi {
         menu.run();
     }
 
+    private void menuCarteira(){
+        Menu menu = new Menu(new String[]{
+                "deposit",
+                "retrieve",
+                "exchange"
+        },gestIdiomas);
+
+        menu.setHandler(1, this::depositMoney);
+        menu.setHandler(2, this::retrieveMoney);
+        menu.setHandler(3, this::exchangeMoney);
+
+        menu.run();
+    }
+
+    private void depositMoney(){
+        int i =0;
+        int index=100;
+        double value;
+        List<String> ras = rasbet.getMoedas();
+        int size= ras.size();
+        while(index>size || index <= 0) {
+            for (i = 0; i < size; i++)
+                System.out.printf("%d - %s%n", i + 1, ras.get(i));
+            System.out.println("Opcao:");
+            index = scin.nextInt();
+        }
+        System.out.println(gestIdiomas.getTexto("depositValue"));
+        value = scin.nextDouble();
+        rasbet.putTransaccao(id_user_atual,ras.get(index-1),Math.abs(value));
+
+
+    }
+
+    private void retrieveMoney(){
+        int i =0;
+        int index=100;
+        double value;
+        boolean success = false;
+
+        List<String> ras = rasbet.getMoedas();
+        int size= ras.size();
+        while(index>size || index <= 0) {
+            for (i = 0; i < size; i++)
+                System.out.printf("%d - %s%n", i + 1, ras.get(i));
+            System.out.println("Opcao:");
+            index = scin.nextInt();
+        }
+        while(!success) {
+            System.out.println(gestIdiomas.getTexto("retrieveValue"));
+            value = scin.nextDouble();
+            success=rasbet.putTransaccao(id_user_atual, ras.get(index - 1), -Math.abs(value));
+            if(!success) System.out.println(gestIdiomas.getTexto("noMoney"));
+        }
+
+
+    }
+
+    private void exchangeMoney(){
+        int i =0;
+        int index=100,index2=100;
+        double value;
+        boolean success = false;
+
+        List<String> ras = rasbet.getMoedas(), ras2 = new ArrayList<>();
+        ras2.addAll(ras);
+        int size= ras.size();
+        while(index>size || index <= 0) {
+            for (i = 0; i < size; i++)
+                System.out.printf("%d - %s%n", i + 1, ras.get(i));
+            System.out.println("Opcao:");
+            index = scin.nextInt();
+        }
+        ras2.remove(index-1);
+
+        while(index2>size-1 || index2 <= 0) {
+            for (i = 0; i < size-1; i++)
+                System.out.printf("%d - %s%n", i + 1, ras2.get(i));
+            System.out.println("Opcao:");
+            index2 = scin.nextInt();
+        }
+
+        while(!success) {
+            System.out.println(gestIdiomas.getTexto("retrieveValue"));
+            value = scin.nextDouble();
+            success=rasbet.putTransaccao(id_user_atual, ras.get(index - 1), -Math.abs(value));
+            if(!success) System.out.println(gestIdiomas.getTexto("noMoney"));
+            else rasbet.putTransaccao(id_user_atual, ras2.get(index2 - 1), 0.97*Math.abs(value)* rasbet.getExchangeRate(ras.get(index - 1),ras2.get(index2 - 1)));
+        }
+
+
+    }
 
     private void menuFutebol(){
         int i =0;
@@ -161,6 +271,8 @@ public class TextUi {
             else System.out.println(e.getMessage());
         }
         System.out.println(gestIdiomas.getTexto("goodlogin"));
+        id_user_atual=email;
+        menuPrincipalAuth();
 
     }
 

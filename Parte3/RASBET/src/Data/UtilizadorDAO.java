@@ -118,7 +118,7 @@ public class UtilizadorDAO implements Map<String,UtilizadorAutenticado>{
 
              c = new Carteira();
             while(rsC.next()){
-                c.addMoeda(new Moeda(rsC.getString("moeda"),rsC.getFloat("exchangeComEuro")),rsC.getFloat("valor"));
+                c.addMoeda(rsC.getString("moeda"),rsC.getFloat("valor"));
             }
             ResultSet rs = stm.executeQuery("SELECT * FROM Utilizador WHERE email='" + email + "'");
              if (rs.next()) {  // A chave existe na tabela
@@ -236,6 +236,10 @@ public class UtilizadorDAO implements Map<String,UtilizadorAutenticado>{
         }
         return setReturn;
     }
+
+
+
+
 }
 
 

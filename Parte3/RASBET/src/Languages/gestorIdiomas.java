@@ -43,6 +43,8 @@ public class gestorIdiomas
 
     public String getTexto(String key){
         //System.out.println(key);
-        return this.langMap.get(this.currentLingua).get(key);
+        String k = this.langMap.get(this.currentLingua).get(key);
+        if(k == null) return key;
+        return k;
     }
 }
