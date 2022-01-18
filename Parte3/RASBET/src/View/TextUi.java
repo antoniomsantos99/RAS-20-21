@@ -77,9 +77,6 @@ public class TextUi {
         String password;
         String email = new String();
         System.out.println("Email:   ");
-        email = scin.nextLine();
-
-        System.out.println("Email:   ");
         while(i==1) {
             email = scin.nextLine();
             if(email.contains("@")) i =0;
@@ -87,10 +84,10 @@ public class TextUi {
 
         System.out.println("Password:   ");
         password = scin.nextLine();
-        /*
+
         try {
         //here it sends to controller
-            //rasbet.login(email,password);
+            rasbet.login(email,password);
 
         } catch(NullPointerException | PasswordIncorreta e){
             if (e instanceof PasswordIncorreta)
@@ -99,7 +96,7 @@ public class TextUi {
             else System.out.println(e.getMessage());
         }
         System.out.println(gestIdiomas.getTexto("goodlogin"));
-    */
+
     }
 
 
@@ -132,7 +129,7 @@ public class TextUi {
             DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
             Date date = format.parse(dataN);
 
-            //rasbet.registarUtilizador(username,email,password);
+            rasbet.registarUtilizador(username,email,password);
             System.out.println(String.format(gestIdiomas.getTexto("signSuccess"),email));
 
         } catch(NullPointerException | UtilizadorExistente | ParseException e){

@@ -30,4 +30,10 @@ public class Carteira {
         moedas.put(m,before+d);
     }
 
+    @Override
+    public String toString() {
+        return "Carteira{" +
+                "moedas=" + moedas +
+                '}';
+    }
 }

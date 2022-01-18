@@ -1,9 +1,6 @@
 package Data;
 
-import Model.Aposta;
-import Model.Carteira;
-import Model.Utilizador;
-import Model.UtilizadorAutenticado;
+import Model.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -111,14 +108,19 @@ public class UtilizadorDAO implements Map<String,UtilizadorAutenticado>{
         ArrayList<Aposta> apostas = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD)){
              Statement stm = conn.createStatement();
-             ResultSet rs = stm.executeQuery("SELECT * FROM Utilizador WHERE email='" + email + "'");
+
              ResultSet rsA = stm.executeQuery("SELECT id FROM Aposta WHERE idUtilizador='" + email + "'");
-             ResultSet rsC = stm.executeQuery("SELECT * FROM Carteira WHERE user='" + email + "'");
-             while(rsA.next()){
-                 Aposta ap = ApostaDAO.getInstance().get(rsA.getInt(1));
-                 apostas.add(ap);
-             }
-             //if(rsC.next()) c = new Carteira(rsC.getFloat("eur"),rsC.getFloat("usd"),rsC.getFloat("gbp"),rsC.getFloat("ada"));
+            while(rsA.next()){
+                Aposta ap = ApostaDAO.getInstance().get(rsA.getInt(1));
+                apostas.add(ap);
+            }
+             ResultSet rsC = stm.executeQuery(String.format("select user,moeda,valor,exchangeComEuro from CarteiraMoeda join moeda on CarteiraMoeda.moeda = moeda.nome where user = '%s'",email));
+
+             c = new Carteira();
+            while(rsC.next()){
+                c.addMoeda(new Moeda(rsC.getString("moeda"),rsC.getFloat("exchangeComEuro")),rsC.getFloat("valor"));
+            }
+            ResultSet rs = stm.executeQuery("SELECT * FROM Utilizador WHERE email='" + email + "'");
              if (rs.next()) {  // A chave existe na tabela
                  a = new UtilizadorAutenticado(true, rs.getString("username"), rs.getString("email"),  rs.getString("password"),c,apostas);
             }
@@ -134,10 +136,9 @@ public class UtilizadorDAO implements Map<String,UtilizadorAutenticado>{
     public UtilizadorAutenticado put(String email, UtilizadorAutenticado u) {
         try (Connection conn = DriverManager.getConnection(DAOconfig.URL, DAOconfig.USERNAME, DAOconfig.PASSWORD)){
              Statement stm = conn.createStatement();
-             Carteira c = new Carteira();
              stm.executeUpdate(
-                    "INSERT INTO Utilizador VALUES ('" + u.getUsername() + "', '" + u.getEmail() + "','" + u.getPassword() + "','" + c +"' ) " +
-                            "ON DUPLICATE KEY UPDATE password=VALUES(password)");
+                    "INSERT INTO Utilizador VALUES ('" + u.getEmail() + "', '" + u.getUsername() + "','" + u.getPassword()  +
+                            "') ON DUPLICATE KEY UPDATE password=VALUES(password)");
         }catch (SQLException e) {
             // Database error!
             e.printStackTrace();

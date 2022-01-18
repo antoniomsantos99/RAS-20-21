@@ -110,7 +110,7 @@ public class JogoDAO {
              Statement stm = conn.createStatement();
              ResultSet rs = stm.executeQuery("SELECT * FROM Jogo WHERE id='" + id + "'");
              if (rs.next()) {  // A chave existe na tabela
-                //a = new Jogo(rs.getInt("id"),rs.getString("participante1"),rs.getString("participante2"), rs.getFloat("Odd1") ,rs.getFloat("Odd2")  ,rs.getFloat("Odd3")  ,rs.getString("resultado"),rs.getTimestamp("data") ,rs.getString("localizacao"));
+                a = new Jogo(rs.getInt("id"),rs.getString("Competicao"),rs.getString("participante1"),rs.getString("participante2"), rs.getFloat("Odd1") ,rs.getFloat("Odd2")  ,rs.getFloat("Odd3")  ,rs.getString("resultado"),rs.getTimestamp("data") ,rs.getString("localizacao"),rs.getString("estado"));
             }
          } catch(SQLException e) {
             // Database error!

@@ -29,4 +29,12 @@ public class Moeda {
     public void setExchange(double e) {
         exchangeComEuro = e;
     }
+
+    @Override
+    public String toString() {
+        return "Moeda{" +
+                "nome='" + nome + '\'' +
+                ", exchangeComEuro=" + exchangeComEuro +
+                '}';
+    }
 }

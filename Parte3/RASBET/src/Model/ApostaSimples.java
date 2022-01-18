@@ -1,17 +1,17 @@
 package Model;
 
 public class ApostaSimples extends Aposta{
-    //private Jogo jogo;
+    private Jogo jogo;
     private int opcao;
     private Float odd;
 
     public ApostaSimples(){
         super();
     }
-    public ApostaSimples(int id,String e, Float vA,String p, int op){
-        super(id,e,vA,p);
+    public ApostaSimples(int id,String e, Float vA,Jogo j, int op){
+        super(id,e,vA);
         this.opcao= op;
-        //this.jogo=j;
+        this.jogo=j;
     }
     public ApostaSimples(ApostaSimples a){
         super(a);

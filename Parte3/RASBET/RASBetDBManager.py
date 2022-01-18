@@ -29,7 +29,7 @@ def importJogosTenis():
     mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="bomdia"
+    password="root"
     )
     mycursor = mydb.cursor()
 
@@ -93,7 +93,7 @@ def importJogosFutebol(jsonJogos,jsonOdds):
     mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="bomdia"
+    password="root"
     )
     mycursor = mydb.cursor()
 

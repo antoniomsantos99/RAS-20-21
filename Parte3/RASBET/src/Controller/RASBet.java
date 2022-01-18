@@ -25,6 +25,7 @@ public class RASBet {
     public Boolean login(String email,String password) throws PasswordIncorreta {
         boolean sucesso = false;
         UtilizadorAutenticado u = this.utilizadores.get(email); //fazer pedido do utilizador
+        System.out.println(u.getCarteira().toString());
         if(Objects.equals(u.getPassword(), password)){
             sucesso= true;
             u.setLoggedIn(true);

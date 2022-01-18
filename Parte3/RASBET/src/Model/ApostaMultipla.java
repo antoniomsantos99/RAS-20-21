@@ -4,38 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApostaMultipla extends Aposta{
-    //private List<Integer> opcoes;
-    //private ArrayList<Jogo> jogos;
-    private ArrayList<ApostaSimples> apostas;
+    private List<Integer> opcoes;
+    private ArrayList<Jogo> jogos;
     private Float totalOdds;
 
     public ApostaMultipla(){
         super();
-        //this.opcoes= new ArrayList<>();
-        this.apostas= new ArrayList<>();
+        this.opcoes= new ArrayList<>();
+        this.jogos = new ArrayList<>();
     }
-    public ApostaMultipla(int id,String e, Float vA,String p,ArrayList<Jogo> jgs, ArrayList<Integer> op){
-        super(id,e,vA,p);
-       // setJogos(jgs);
-        //setOp(op);
+    public ApostaMultipla(int id,String e, Float vA,ArrayList<Jogo> jgs, ArrayList<Integer> op){
+        super(id,e,vA);
+        this.opcoes= op;
+        this.jogos = jgs;
     }
     public ApostaMultipla(ApostaMultipla a){
         super(a);
-        //setJogos(a.getJogos());
-        //setOp(a.getOp());
     }
-
+/*
     public ArrayList<Aposta> getApostas() {
         ArrayList<Aposta> aps = new ArrayList<>();
         for(Aposta a : apostas)
             aps.add(a.clone());
         return aps;
     }
+    */
+
 
     public ArrayList<Jogo> getJogos() {
         ArrayList<Jogo> jogos = new ArrayList<>();
-        for(Aposta a : apostas)
-            jogos.add(a.getJogo());
+        for(Jogo j : this.jogos)
+            jogos.add(j);
         /*for(Jogo a : this.jogos)
             ap.add(a.clone());*/
         return jogos;
@@ -45,15 +44,16 @@ public class ApostaMultipla extends Aposta{
         return totalOdds;
     }
 
-    public void addAposta(ApostaSimples a) {
-        apostas.add(a.clone());
-        totalOdds *= a.getOdd();
+    public void addAposta(Jogo j, Integer o) {
+        jogos.add(j.clone());
+        opcoes.add(o);
+        totalOdds *= j.getOdds()[o];
     }
 
     public Boolean checkResultados() {
         boolean r = true;
-        for(Aposta a : apostas)
-            if(!a.getResultado()) {
+        for(int i = 0;i<opcoes.size();i++)
+            if(opcoes.get(i)!=jogos.get(i).checkResultado()) {
                 r = false;
                 break;
             }
